@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://PathFollow.gd" type="Script" id=1]
+[ext_resource path="res://GFX/SPRITES/sawblade.png" type="Texture" id=2]
+[ext_resource path="res://Hazards/Sawblade.gd" type="Script" id=3]
+[ext_resource path="res://Hazards/Hazards.gd" type="Script" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 350, 190, 0, 0, 0, 0, -663, 188, 0, 0, 0, 0, -666, 188, 0, 0, 0, 0, 352, 191, 0, 0, 0, 0, 352, 191 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Spin"
+length = 1.5
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 175.864
+
+[node name="Sawblade" type="Path2D"]
+position = Vector2( 947, 507 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( 350, 190 )
+rotation = -3.1348
+rotate = false
+
+[node name="Sprite" type="Sprite" parent="PathFollow2D"]
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow2D/Sprite"]
+anims/Spin = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+collision_layer = 4
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="PathFollow2D/Area2D" to="PathFollow2D/Area2D" method="_on_SpikeTop_body_entered"]

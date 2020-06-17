@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Tileset_Dungeon.tres" type="TileSet" id=2]
+[ext_resource path="res://GFX/SPRITES/backdrop.png" type="Texture" id=3]
+[ext_resource path="res://GFX/SPRITES/Room_Border.png" type="Texture" id=4]
+[ext_resource path="res://Hazards/Spikes.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Gamestate.gd" type="Script" id=6]
+[ext_resource path="res://Hazards/Sawblade.tscn" type="PackedScene" id=7]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 2575, 1141 )
+b = Vector2( -3304, 1144 )
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -2320, 1215 )
+b = Vector2( -2320, -1205 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 2330, 1212 )
+b = Vector2( 2329, -795 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 1440, -1200 )
+b = Vector2( -2326, -1201 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 566, 323 )
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 134, -180, 0, 0, 0, 0, -952, -178, 0, 0, 0, 0, -948, -178, 0, 0, 0, 0, 134, -181, 0, 0, 0, 0, 135, -182 )
+}
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 359, 379, 0, 0, 0, 0, -278, 381, 0, 0, 0, 0, -280, 192, 0, 0, 0, 0, 358, 189, 0, 0, 0, 0, 359, 378 )
+}
+
+[node name="TestLevel" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="RoomBase" type="Node2D" parent="."]
+
+[node name="Backdrop" type="Sprite" parent="RoomBase"]
+position = Vector2( 2560, 1440 )
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="RoomBase"]
+anchor_mode = 0
+current = true
+zoom = Vector2( 2.66, 2.66 )
+
+[node name="RoomBorder" type="Sprite" parent="RoomBase"]
+position = Vector2( 2560, 1440 )
+texture = ExtResource( 4 )
+
+[node name="Floor" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Floor"]
+position = Vector2( -18, 67 )
+shape = SubResource( 1 )
+
+[node name="LeftWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+position = Vector2( 0, -743 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/LeftWall"]
+shape = SubResource( 2 )
+
+[node name="RightWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/RightWall"]
+shape = SubResource( 3 )
+
+[node name="Ceiling" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Ceiling"]
+shape = SubResource( 4 )
+
+[node name="UIBox" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/UIBox"]
+position = Vector2( 1995, -1117 )
+shape = SubResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 720900, 0, 0, 786450, 2, 0, 852025, 3, 0, 1245203, 0, 0, 1441849, 1, 0, 1900548, 1, 0, 1966130, 1, 0, 2228248, 3, 0 )
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="Spikes" parent="Hazards" instance=ExtResource( 5 )]
+position = Vector2( 2207, 2110 )
+
+[node name="Spikes2" parent="Hazards" instance=ExtResource( 5 )]
+position = Vector2( 1605, 307 )
+rotation = 3.14159
+
+[node name="Spikes3" parent="Hazards" instance=ExtResource( 5 )]
+position = Vector2( 4823, 2401 )
+rotation = 4.71238
+
+[node name="Sawblade" parent="Hazards" instance=ExtResource( 7 )]
+position = Vector2( 4250, 2825 )
+curve = SubResource( 6 )
+
+[node name="Sawblade2" parent="Hazards" instance=ExtResource( 7 )]
+position = Vector2( 1497, 1026 )
+curve = SubResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3390, 1642 )
