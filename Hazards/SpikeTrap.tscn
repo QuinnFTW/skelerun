@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Hazards/Hazards.gd" type="Script" id=1]
+[ext_resource path="res://GFX/SPRITES/spiketrap_active.png" type="Texture" id=2]
+[ext_resource path="res://GFX/SPRITES/spiketrap_inactive.png" type="Texture" id=3]
+[ext_resource path="res://Hazards/AnimatedSpikeTrap.gd" type="Script" id=4]
+[ext_resource path="res://Hazards/TrapTrigger.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "deactivate",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "activate",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 125.192, 26.0848 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 124.955, 10 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "ColliderAnimation"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -34 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite/Area2D/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 60 ), Vector2( 0, -55 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "deactivate", "activate" ]
+}
+
+[node name="SpikeTrap" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "deactivate"
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite"]
+collision_layer = 4
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Area2D"]
+position = Vector2( 0, 60 )
+shape = SubResource( 2 )
+
+[node name="Area2D2" type="Area2D" parent="AnimatedSprite"]
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Area2D2"]
+position = Vector2( 0, 25.1401 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ColliderAnimation = SubResource( 3 )
+script = ExtResource( 4 )
+[connection signal="body_entered" from="AnimatedSprite/Area2D" to="AnimatedSprite/Area2D" method="_on_SpikeTop_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite/Area2D2" to="AnimatedSprite/Area2D2" method="_on_SpikeTop_body_entered"]
