@@ -13,4 +13,4 @@ func fire():
 		time_out = true
 
 func _on_Timer_timeout():
-	time_out = false
+	time_out = false 

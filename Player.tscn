@@ -8,6 +8,7 @@
 script/source = "extends KinematicBody2D
 
 var motion = Vector2(0,0)
+var time_out = false
 
 signal animate
 
@@ -54,12 +55,15 @@ func jump():
 		
 	
 func hurt():
-	#bypass regular movement commands by moving the player off the ground, waiting a frame, and then executing
-	motion.y = 0
-	position.y -= 1
-	yield(get_tree(), \"idle_frame\") 
-	motion.y -= HURT_JUMP
-	$HurtSFX.play()
+	if not time_out:
+		#bypass regular movement commands by moving the player off the ground, waiting a frame, and then executing
+		motion.y = 0
+		position.y -= 1
+		yield(get_tree(), \"idle_frame\") 
+		motion.y -= HURT_JUMP
+		$HurtSFX.play()
+		$Timer.start()
+		time_out = true
 	
 		
 func boost():
@@ -67,6 +71,10 @@ func boost():
 	yield(get_tree(), \"idle_frame\")
 	motion.y -= JUMP_SPEED * BOOST_MULTIPLIER
 	
+
+
+func _on_Timer_timeout():
+	time_out = false
 "
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -102,4 +110,8 @@ volume_db = -8.078
 [node name="HurtSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -3.029
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="animate" from="." to="PlayerAnimation" method="_on_Player_animate"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
