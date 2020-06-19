@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Tileset_Dungeon.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Hazards/Trapdoor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Hazards/Conveyor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Hazards/Conveyor_Doublewide.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=12]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 2575, 1141 )
@@ -145,5 +146,16 @@ position = Vector2( 3151.13, 1480.22 )
 position = Vector2( 2482.35, 1094.96 )
 reverse = true
 
+[node name="Gargoyle" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 311.172, 1157.41 )
+
+[node name="Gargoyle2" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 4813.47, 1186.4 )
+
+[node name="AnimatedSprite" parent="Hazards/Gargoyle2" index="0"]
+flip_h = true
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3808.43, 1675.47 )
+
+[editable path="Hazards/Gargoyle2"]

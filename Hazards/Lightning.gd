@@ -5,6 +5,7 @@ const SPEED = 200
 func _ready():
 	set_as_toplevel(true)
 	global_position = get_parent().global_position
+	var v = get_parent().myvariable
 	
 func manage_collision():
 	var collider = $Area2D.get_overlapping_bodies()

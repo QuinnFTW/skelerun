@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Hoppy Days"
+config/name="Skelerun"
 run/main_scene="res://Levels/TestLevel.tscn"
 config/icon="res://icon.png"
 
