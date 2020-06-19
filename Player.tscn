@@ -9,6 +9,8 @@ script/source = "extends KinematicBody2D
 
 var motion = Vector2(0,0)
 var time_out = false
+var is_being_pushed = false
+var push_dir = 0
 
 signal animate
 
@@ -22,10 +24,13 @@ const HURT_JUMP = 2000
 
 func _physics_process(delta):
 	apply_gravity()
+	move_and_slide(motion, UP)
 	jump()
 	move()
 	animate()
-	move_and_slide(motion, UP)
+	push(push_dir)
+	
+	
 
 func apply_gravity():
 	if position.y > WORLD_LIMIT:
@@ -39,12 +44,12 @@ func apply_gravity():
 		
 func move():
 	if Input.is_action_pressed(\"left\") and not Input.is_action_pressed(\"right\"):
-		motion.x = -SPEED
+		motion.x = -SPEED + push_dir 
 	elif Input.is_action_pressed(\"right\") and not Input.is_action_pressed(\"left\"):
-		motion.x = SPEED
-	else:
+		motion.x = SPEED + push_dir  
+	elif not is_being_pushed:
 		motion.x = 0
-		
+			
 func animate():
 	emit_signal(\"animate\", motion)
 
@@ -70,6 +75,15 @@ func boost():
 	position.y -= 1
 	yield(get_tree(), \"idle_frame\")
 	motion.y -= JUMP_SPEED * BOOST_MULTIPLIER
+	
+func start_push(is_pushing, push_direction):
+	is_being_pushed = is_pushing
+	push_dir = push_direction
+	
+	
+	
+func push(direction):
+		motion.x += direction / 10
 	
 
 
