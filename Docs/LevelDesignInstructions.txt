@@ -1,0 +1,35 @@
+Format:
+
+Organize game objects under generic "Node" nodes. They are named and organaized as follows:
+
+Hazards: 
+	-Spike Traps
+	-Spikes
+	-Gargoyles
+	-Torchy
+	-Dark Torchy
+	-Thwomps
+
+Structure:
+	-Tileset (DungeonPlatforms)
+	-Conveyors
+	-Trap Doors
+
+Decoration: 
+	-Torches
+
+
+Special Instructions:
+
+The following objects have special conditions to be implemented properly.
+
+Tilest: Add a new node "TileMap" and under "Tile Set" load "Tileset_Dungeon". Now clicking the
+	node will open the tileset editor. Choose the desired platform and click to place.
+	Right click on top left corner to erase.
+
+Gargoyle (only if flipping to face left): Right click on the new gargoyle node and tick the 
+	"editable children" box. You can now navigate to this instance's animated sprite and
+	tick the "Flip H" box.
+
+Sawblade: Under "curve" in the inspector, click "make unique." You can now adjust the follow
+	path for the sawblade.

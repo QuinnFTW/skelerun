@@ -10,7 +10,7 @@ func _ready():
 	elif not $AnimatedSprite.flip_h:
 		is_flipped = false
 
-func _process(delta):
+func _process(_delta):
 	fire()
 		
 func fire():

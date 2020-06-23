@@ -32,11 +32,14 @@ func coin_up():
 		lives_up()
 		
 func end_game():
-	get_tree().change_scene("res://Levels/GameOver.tscn")
-	
+#	get_tree().change_scene("res://Levels/GameOver.tscn")
+	pass
+
 func win_game():
-	get_tree().change_scene("res://Levels/Victory.tscn")
+#	get_tree().change_scene("res://Levels/Victory.tscn")
+	pass
 
 func update_GUI():
-	get_tree().call_group("GUI", "update_GUI", lives, coins)
+#	get_tree().call_group("GUI", "update_GUI", lives, coins)
+	pass
 	

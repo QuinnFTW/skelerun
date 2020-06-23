@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Tileset_Dungeon.tres" type="TileSet" id=2]
-[ext_resource path="res://GFX/SPRITES/backdrop.png" type="Texture" id=3]
-[ext_resource path="res://GFX/SPRITES/Room_Border.png" type="Texture" id=4]
+[ext_resource path="res://GFX/SPRITES/Room_Border_Large.png" type="Texture" id=3]
+[ext_resource path="res://GFX/SPRITES/backdrop_Large.png" type="Texture" id=4]
 [ext_resource path="res://Hazards/Spikes.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=6]
 [ext_resource path="res://Hazards/Sawblade.tscn" type="PackedScene" id=7]
@@ -12,32 +12,30 @@
 [ext_resource path="res://Hazards/Conveyor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Hazards/Conveyor_Doublewide.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Hazards/Thwomp.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SegmentShape2D" id=1]
-a = Vector2( 2575, 1141 )
-b = Vector2( -3304, 1144 )
+a = Vector2( 3075.12, 1143.66 )
+b = Vector2( -3150.68, 1140.95 )
 
 [sub_resource type="SegmentShape2D" id=2]
-a = Vector2( -2320, 1215 )
-b = Vector2( -2320, -1205 )
+a = Vector2( -2958.57, 2317.04 )
+b = Vector2( -2963.73, -826.825 )
 
 [sub_resource type="SegmentShape2D" id=3]
-a = Vector2( 2330, 1212 )
-b = Vector2( 2329, -795 )
+a = Vector2( 2957.47, 1558.55 )
+b = Vector2( 2957.47, -1549.18 )
 
 [sub_resource type="SegmentShape2D" id=4]
-a = Vector2( 1440, -1200 )
-b = Vector2( -2326, -1201 )
+a = Vector2( 2971.85, -1554.34 )
+b = Vector2( -2964.84, -1549.18 )
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 566, 323 )
-
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=5]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 134, -180, 0, 0, 0, 0, -952, -178, 0, 0, 0, 0, -948, -178, 0, 0, 0, 0, 134, -181, 0, 0, 0, 0, 135, -182 )
+"points": PoolVector2Array( 0, 0, 0, 0, 533.395, -518.433, 0, 0, 0, 0, -735.976, -523.733, 0, 0, 0, 0, -733.326, -332.93, 0, 0, 0, 0, 538.695, -332.93, 0, 0, 0, 0, 533.395, -518.433 )
 }
 
-[sub_resource type="Curve2D" id=7]
+[sub_resource type="Curve2D" id=6]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 359, 379, 0, 0, 0, 0, -278, 381, 0, 0, 0, 0, -280, 192, 0, 0, 0, 0, 358, 189, 0, 0, 0, 0, 359, 378 )
 }
@@ -46,25 +44,27 @@ _data = {
 script = ExtResource( 6 )
 
 [node name="RoomBase" type="Node2D" parent="."]
+position = Vector2( 634.967, 356.201 )
 
 [node name="Backdrop" type="Sprite" parent="RoomBase"]
-position = Vector2( 2560, 1440 )
-texture = ExtResource( 3 )
+position = Vector2( 2551.4, 1433.98 )
+texture = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="RoomBase"]
+position = Vector2( -645.294, -362.589 )
 anchor_mode = 0
 current = true
-zoom = Vector2( 2.66, 2.66 )
+zoom = Vector2( 3.3, 3.3 )
 
 [node name="RoomBorder" type="Sprite" parent="RoomBase"]
 position = Vector2( 2560, 1440 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="Floor" type="StaticBody2D" parent="RoomBase/RoomBorder"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Floor"]
-position = Vector2( -18, 67 )
+position = Vector2( -18, 410.202 )
 shape = SubResource( 1 )
 
 [node name="LeftWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
@@ -86,18 +86,11 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Ceiling"]
 shape = SubResource( 4 )
 
-[node name="UIBox" type="StaticBody2D" parent="RoomBase/RoomBorder"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/UIBox"]
-position = Vector2( 1995, -1117 )
-shape = SubResource( 5 )
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 720900, 0, 0, 786450, 2, 0, 852025, 3, 0, 1245203, 0, 0, 1900548, 1, 0, 1966134, 1, 0, 2228248, 3, 0 )
+tile_data = PoolIntArray( 720900, 0, 0, 786450, 2, 0, 852025, 3, 0, 1245203, 0, 0, 1835017, 0, 0, 2228248, 3, 0, 2228279, 1, 0, 2555980, 1, 0, 2818082, 2, 0 )
 
 [node name="Hazards" type="Node" parent="."]
 
@@ -109,7 +102,7 @@ position = Vector2( 1605, 307 )
 rotation = 3.14159
 
 [node name="Spikes3" parent="Hazards" instance=ExtResource( 5 )]
-position = Vector2( 4823, 2401 )
+position = Vector2( 6103.26, 2277.1 )
 rotation = 4.71238
 
 [node name="Spikes4" parent="Hazards" instance=ExtResource( 5 )]
@@ -117,30 +110,30 @@ position = Vector2( 303.582, 1642 )
 rotation = 1.5708
 
 [node name="Sawblade" parent="Hazards" instance=ExtResource( 7 )]
-position = Vector2( 4250, 2825 )
-curve = SubResource( 6 )
+position = Vector2( 4260.6, 2703.1 )
+curve = SubResource( 5 )
 
 [node name="Sawblade2" parent="Hazards" instance=ExtResource( 7 )]
 position = Vector2( 1497, 1026 )
-curve = SubResource( 7 )
+curve = SubResource( 6 )
 
 [node name="SpikeTrap" parent="Hazards" instance=ExtResource( 8 )]
-position = Vector2( 1599.06, 2617.69 )
+position = Vector2( 1599.06, 3316.39 )
 
 [node name="SpikeTrap2" parent="Hazards" instance=ExtResource( 8 )]
-position = Vector2( 1864.03, 2617.69 )
+position = Vector2( 1864.03, 3316.39 )
 
 [node name="SpikeTrap3" parent="Hazards" instance=ExtResource( 8 )]
-position = Vector2( 1337.26, 2617.69 )
+position = Vector2( 1337.26, 3316.39 )
 
 [node name="SpikeTrap4" parent="Hazards" instance=ExtResource( 8 )]
-position = Vector2( 1075.46, 2617.69 )
+position = Vector2( 1075.46, 3316.39 )
 
 [node name="Trapdoor" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 3121.02, 2077.96 )
+position = Vector2( 3177.81, 2336.08 )
 
 [node name="Conveyor2" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 3151.13, 1480.22 )
+position = Vector2( 3474.9, 1618.98 )
 
 [node name="Conveyor" parent="Hazards" instance=ExtResource( 11 )]
 position = Vector2( 2482.35, 1094.96 )
@@ -150,12 +143,15 @@ reverse = true
 position = Vector2( 311.172, 1157.41 )
 
 [node name="Gargoyle2" parent="Hazards" instance=ExtResource( 12 )]
-position = Vector2( 4813.47, 1186.4 )
+position = Vector2( 6078.24, 1769.74 )
 
 [node name="AnimatedSprite" parent="Hazards/Gargoyle2" index="0"]
 flip_h = true
 
+[node name="Thwomp" parent="Hazards" instance=ExtResource( 13 )]
+position = Vector2( 4300.22, 1200.74 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 3808.43, 1675.47 )
+position = Vector2( 5234.47, 2194.76 )
 
 [editable path="Hazards/Gargoyle2"]

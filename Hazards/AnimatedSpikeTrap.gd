@@ -6,7 +6,7 @@ var on_trap = false
 #func _ready():
 #	$Timer.wait_time = 1
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if on_trap and time_out:
 		$Timer.start()
 	elif on_trap and not time_out:
@@ -19,7 +19,7 @@ func _physics_process(delta):
 #	self.play_backwards("ColliderAnimation")
 
 
-func _on_trigger_body_entered(body):
+func _on_trigger_body_entered(_body):
 #	$Timer.wait_time = 1
 #	$Timer.start()
 	on_trap = true
@@ -37,6 +37,6 @@ func activate_trap():
 	time_out = false
 
 
-func _on_Area2D2_body_exited(body):
+func _on_Area2D2_body_exited(_body):
 	on_trap = false
 	$Timer.start()
