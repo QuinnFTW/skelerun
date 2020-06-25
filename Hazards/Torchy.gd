@@ -4,10 +4,8 @@ var time_out = false
 var player_detected
 var player
 
-
 func _process(_delta):
 	animate()
-
 		
 func animate():
 	if not time_out and player_detected:
@@ -26,14 +24,10 @@ func fire():
 func _on_Timer_timeout():
 	time_out = false 
 
-
 func _on_DetectionRadius_body_entered(body):
 	player_detected = true
 	player = body
 
-
 func _on_DetectionRadius_body_exited(body):
 	player_detected = false
 #	player = null
-
-
