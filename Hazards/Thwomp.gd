@@ -48,3 +48,7 @@ func reset_position():
 		is_resetting = false
 		$Timer.start()
 
+
+
+func _on_Hazard_body_exited(body):
+	pass # Replace with function body.

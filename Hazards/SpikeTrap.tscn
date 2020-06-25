@@ -104,8 +104,8 @@ script = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="AnimationPlayer"]
 wait_time = 1.2
-[connection signal="body_entered" from="AnimatedSprite/Area2D" to="AnimatedSprite/Area2D" method="_on_SpikeTop_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite/Area2D" to="AnimatedSprite/Area2D" method="_on_Hazard_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite/Area2D" to="AnimatedSprite/Area2D" method="_on_Hazard_body_exited"]
 [connection signal="body_entered" from="AnimatedSprite/Area2D2" to="AnimationPlayer" method="_on_trigger_body_entered"]
-[connection signal="body_entered" from="AnimatedSprite/Area2D2" to="AnimatedSprite/Area2D2" method="_on_SpikeTop_body_entered"]
-[connection signal="body_exited" from="AnimatedSprite/Area2D2" to="AnimationPlayer" method="_on_Area2D2_body_exited"]
+[connection signal="body_exited" from="AnimatedSprite/Area2D2" to="AnimationPlayer" method="_on_trigger_body_exited"]
 [connection signal="timeout" from="AnimationPlayer/Timer" to="AnimationPlayer" method="_on_Timer_timeout"]

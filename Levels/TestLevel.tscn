@@ -157,10 +157,10 @@ position = Vector2( 4300.22, 1200.74 )
 [node name="Torchy" parent="Hazards" instance=ExtResource( 14 )]
 position = Vector2( 5488.7, 1191.54 )
 
+[node name="TorchyDark" parent="Hazards" instance=ExtResource( 15 )]
+position = Vector2( 1484.82, 2618.5 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 5234.47, 2194.76 )
-
-[node name="Torchy" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1484.82, 2618.5 )
 
 [editable path="Hazards/Gargoyle2"]

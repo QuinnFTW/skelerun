@@ -71,7 +71,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 1914.42
+radius = 805.018
 
 [node name="TorchyDark" type="Node2D"]
 script = ExtResource( 7 )

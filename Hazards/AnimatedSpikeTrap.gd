@@ -36,7 +36,6 @@ func activate_trap():
 #	self.play_backwards("ColliderAnimation")
 	time_out = false
 
-
-func _on_Area2D2_body_exited(_body):
+func _on_trigger_body_exited(_body):
 	on_trap = false
 	$Timer.start()

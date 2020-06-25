@@ -55,7 +55,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -70,8 +70,8 @@ tracks/0/keys = {
 "values": [ "idle", "idle" ]
 }
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 1029.88
+[sub_resource type="CircleShape2D" id=4]
+radius = 1094.37
 
 [node name="Torchy" type="Node2D"]
 script = ExtResource( 7 )
@@ -79,11 +79,12 @@ script = ExtResource( 7 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fire = SubResource( 2 )
-anims/idle = SubResource( 4 )
+anims/idle = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -92,7 +93,7 @@ wait_time = 2.0
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="DetectionRadius" to="." method="_on_DetectionRadius_body_entered"]
 [connection signal="body_exited" from="DetectionRadius" to="." method="_on_DetectionRadius_body_exited"]

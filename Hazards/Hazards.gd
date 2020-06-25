@@ -1,4 +1,13 @@
 extends Area2D
 
-func _on_SpikeTop_body_entered(_body):
-	get_tree().call_group("Gamestate", "hurt")
+var do_hurt = false
+
+func _on_Hazard_body_entered(_body):
+	do_hurt = true
+	
+func _on_Hazard_body_exited(_body):
+	do_hurt = false
+	
+func _process(_delta):
+	if do_hurt:
+		get_tree().call_group("Gamestate", "hurt")
