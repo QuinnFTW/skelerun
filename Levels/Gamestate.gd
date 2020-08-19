@@ -4,9 +4,12 @@ var lives = 15
 var coins = 0
 var target_number_of_coins = 10
 
+
 func _ready():
+	
 	add_to_group("Gamestate")
 	update_GUI()
+	
 	
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -43,3 +46,5 @@ func update_GUI():
 #	get_tree().call_group("GUI", "update_GUI", lives, coins)
 	pass
 	
+	
+

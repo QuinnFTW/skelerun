@@ -9,6 +9,7 @@ script/source = "extends KinematicBody2D
 
 var motion = Vector2(0,0)
 var time_out = false
+var stun_time_out = false
 var hurt = false
 var is_being_pushed = false
 var push_dir = 0
@@ -50,7 +51,9 @@ func apply_gravity():
 		motion.y += GRAVITY
 		
 func move():
-	if Input.is_action_pressed(\"left\") and not Input.is_action_pressed(\"right\"):
+	if stun_time_out == true:
+		motion.x = 0
+	elif Input.is_action_pressed(\"left\") and not Input.is_action_pressed(\"right\"):
 		motion.x = -SPEED + push_dir 
 	elif Input.is_action_pressed(\"right\") and not Input.is_action_pressed(\"left\"):
 		motion.x = SPEED + push_dir  
@@ -74,6 +77,8 @@ func hurt():
 		motion.y -= HURT_JUMP
 		$HurtSFX.play()
 		$Timer.start()
+		$StunTimer.start()
+		stun_time_out = true
 		time_out = true
 		hurt = true
 	
@@ -93,9 +98,15 @@ func _on_Timer_timeout():
 	time_out = false
 	hurt = false
 	
+func _on_StunTimer_timeout():
+	stun_time_out = false
+	
 func drop():
 	if Input.is_action_pressed(\"down\") and Input.is_action_just_pressed(\"special\"):
 		self.position = Vector2(self.position.x, self.position.y + 5)
+
+
+
 "
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -134,5 +145,9 @@ stream = ExtResource( 7 )
 volume_db = -3.029
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="StunTimer" type="Timer" parent="."]
 [connection signal="animate" from="." to="PlayerAnimation" method="_on_Player_animate"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_StunTimer_timeout"]

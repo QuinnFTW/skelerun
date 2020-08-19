@@ -61,6 +61,7 @@ special={
 2d_physics/layer_2="terrain"
 2d_physics/layer_3="hazards"
 2d_physics/layer_4="items"
+2d_physics/layer_5="roomGen"
 
 [rendering]
 

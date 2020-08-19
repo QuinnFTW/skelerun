@@ -1,6 +1,20 @@
+Getting Started:
+
+1. Find the scene "TemplateLevel" in the "levels" folder.
+2. Right click on it and hit "duplicate"
+3. Name it according to the naming conventions below (you can rename it later too)
+4. Drag your level into the folder levels->RoomArray.
+
+
+5. The room needs to be added to the script RoomGenerator.gd (by clicking and dragging it into the "levels" array)
+	in order to appear in the actual game.
+	This isn't necessary to design the level. Just keep in mind that if you change the name of the level
+	or it's location after you've added it to the RoomGenerator, go back into the script and change it to
+	match the updated name/location. 
+
 Format:
 
-Organize game objects under generic "Node" nodes. They are named and organaized as follows:
+Organize game objects under generic "Node" nodes. They are named and organaized as follows*:
 
 Hazards: 
 	-Spike Traps
@@ -18,12 +32,15 @@ Structure:
 Decoration: 
 	-Torches
 
+*NOTE: There will be more of all types of assets to come later. Feel free to come back and add new assets to old levels as they are made.
+
 
 Special Instructions:
 
 The following objects have special conditions to be implemented properly.
 
-Tilest: Add a new node "TileMap" and under "Tile Set" load "Tileset_Dungeon". Now clicking the
+Tilest: (Shouldn't be necessary to add as template comes with a tile map but useful if it gets deleted)
+	Add a new node "TileMap" and under "Tile Set" load "Tileset_Dungeon". Now clicking the
 	node will open the tileset editor. Choose the desired platform and click to place.
 	Right click on top left corner to erase.
 
@@ -33,3 +50,41 @@ Gargoyle (only if flipping to face left): Right click on the new gargoyle node a
 
 Sawblade: Under "curve" in the inspector, click "make unique." You can now adjust the follow
 	path for the sawblade.
+
+
+Design Guidlines:
+
+1. Flow of play is left to right. The player object must start standing next to the entrance door on the left wall.
+	They will end the level by entering the exit door on the right. 
+2. The Death Wall will be always moving so make sure the level is possible without getting swallowed by the wall. (see 3) 
+3. You can add a deathWall to playtest but make sure to delete it from your scene in the final version of the level
+4. The Speed of the death wall and all attributes of the player (speed, jump height, stun/invincibility time) must be consistent
+	accross all levels. Do not tweak these to suit a particular level. Make the level work around them.
+
+
+Saving and File Format
+
+1. Name your level l_ + (number of your level in 3 digits) + (short title for your level in parentheses). 
+	Ex. l_021(SpikeRun), l_131(SawbladeMadness), l_014(GargoyleFunhouse)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
