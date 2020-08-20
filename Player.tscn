@@ -13,6 +13,7 @@ var stun_time_out = false
 var hurt = false
 var is_being_pushed = false
 var push_dir = 0
+var is_frozen = false
 
 signal animate
 
@@ -56,9 +57,9 @@ func apply_gravity():
 func move():
 	if stun_time_out == true:
 		motion.x = push_dir
-	elif Input.is_action_pressed(\"left\") and not Input.is_action_pressed(\"right\"):
+	elif Input.is_action_pressed(\"left\") and not Input.is_action_pressed(\"right\") and not is_frozen:
 		motion.x = -SPEED + push_dir 
-	elif Input.is_action_pressed(\"right\") and not Input.is_action_pressed(\"left\"):
+	elif Input.is_action_pressed(\"right\") and not Input.is_action_pressed(\"left\") and not is_frozen:
 		motion.x = SPEED + push_dir  
 	elif not is_being_pushed:
 		motion.x = 0
@@ -67,7 +68,7 @@ func animate():
 	emit_signal(\"animate\", motion)
 
 func jump():
-	if Input.is_action_just_pressed(\"jump\") and is_on_floor() and not stun_time_out:
+	if Input.is_action_just_pressed(\"jump\") and is_on_floor() and not stun_time_out and not is_frozen:
 		motion.y -= JUMP_SPEED
 		$JumpSFX.play()
 	
@@ -107,7 +108,12 @@ func _on_StunTimer_timeout():
 func drop():
 	if Input.is_action_pressed(\"down\") and Input.is_action_just_pressed(\"special\"):
 		self.position = Vector2(self.position.x, self.position.y + 5)
-
+		
+func freeze():
+	is_frozen = true
+	
+func unfreeze():
+	is_frozen = false
 
 
 "

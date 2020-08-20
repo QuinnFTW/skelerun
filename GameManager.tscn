@@ -27,14 +27,17 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.49, 0.51 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.49, 0.51, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "unload_level"
 }, {
 "args": [  ],
 "method": "load_level"
+}, {
+"args": [  ],
+"method": "unfreeze_player"
 } ]
 }
 

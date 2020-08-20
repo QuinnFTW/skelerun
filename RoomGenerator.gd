@@ -14,6 +14,7 @@ func _ready():
 	randomize()
 	levels.shuffle()
 	load_level()
+	unfreeze_player()
 	pass
 	
 func generate():
@@ -30,9 +31,16 @@ func load_level():
 	var scene = load(levels[index])
 	active_level = scene.instance()
 	add_child(active_level)
+	freeze_player()
 	
 func scene_transition():
 	get_tree().call_group("Animator", "fade_out_in")
 	
 func unload_level():
 	remove_child(active_level)
+	
+func freeze_player():
+	get_tree().call_group("Player", "freeze")
+	
+func unfreeze_player():
+	get_tree().call_group("Player", "unfreeze")
