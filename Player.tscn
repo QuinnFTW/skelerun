@@ -24,6 +24,9 @@ const WORLD_LIMIT = 3000
 const BOOST_MULTIPLIER = 1.5
 const HURT_JUMP = 2000
 
+func _ready():
+	add_to_group(\"Player\")
+
 func _physics_process(_delta):
 	apply_gravity()
 	move_and_slide(motion, UP)
@@ -52,7 +55,7 @@ func apply_gravity():
 		
 func move():
 	if stun_time_out == true:
-		motion.x = 0
+		motion.x = push_dir
 	elif Input.is_action_pressed(\"left\") and not Input.is_action_pressed(\"right\"):
 		motion.x = -SPEED + push_dir 
 	elif Input.is_action_pressed(\"right\") and not Input.is_action_pressed(\"left\"):
@@ -64,7 +67,7 @@ func animate():
 	emit_signal(\"animate\", motion)
 
 func jump():
-	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
+	if Input.is_action_just_pressed(\"jump\") and is_on_floor() and not stun_time_out:
 		motion.y -= JUMP_SPEED
 		$JumpSFX.play()
 	
@@ -74,7 +77,7 @@ func hurt():
 		motion.y = 0
 		position.y -= 1
 		yield(get_tree(), \"idle_frame\") 
-		motion.y -= HURT_JUMP
+#		motion.y -= HURT_JUMP
 		$HurtSFX.play()
 		$Timer.start()
 		$StunTimer.start()
@@ -113,7 +116,9 @@ func drop():
 radius = 87.837
 height = 174.153
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
 position = Vector2( 513.052, 408.272 )
 collision_mask = 14
 script = SubResource( 1 )

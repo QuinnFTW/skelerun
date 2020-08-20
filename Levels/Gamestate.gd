@@ -18,7 +18,8 @@ func _unhandled_input(event):
 
 func hurt():
 	lives -= 1
-	$Player.hurt()
+#	$Player.hurt()
+	get_tree().call_group("Player", "hurt")
 	update_GUI()
 	if lives < 0:
 		end_game()

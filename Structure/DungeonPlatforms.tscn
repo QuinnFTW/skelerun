@@ -1,21 +1,27 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://GFX/SPRITES/platform_thickSmall.png" type="Texture" id=1]
 [ext_resource path="res://GFX/SPRITES/platform_thickLargel.png" type="Texture" id=2]
 [ext_resource path="res://GFX/SPRITES/platform_thinSmall.png" type="Texture" id=3]
 [ext_resource path="res://GFX/SPRITES/platform_thinLarge.png" type="Texture" id=4]
+[ext_resource path="res://GFX/SPRITES/platform_wallTop.png" type="Texture" id=5]
+[ext_resource path="res://GFX/SPRITES/platform_wallMid.png" type="Texture" id=6]
+[ext_resource path="res://GFX/SPRITES/platform_wallBottom.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 320, 96 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 135.037, 95.7075 )
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 641, 96 )
 
-[sub_resource type="SegmentShape2D" id=3]
+[sub_resource type="SegmentShape2D" id=4]
 a = Vector2( -317, -39 )
 b = Vector2( 317, -38.9972 )
 
-[sub_resource type="SegmentShape2D" id=4]
+[sub_resource type="SegmentShape2D" id=5]
 a = Vector2( -641, -42 )
 b = Vector2( 637, -41 )
 
@@ -31,6 +37,36 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_Thick_Small/StaticBody2D"]
 shape = SubResource( 1 )
 
+[node name="Platform_Wall_Top" type="Sprite" parent="."]
+position = Vector2( 402.003, 663.445 )
+texture = ExtResource( 5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform_Wall_Top"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_Wall_Top/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Platform_Wall_Mid" type="Sprite" parent="."]
+position = Vector2( 402.003, 888.191 )
+texture = ExtResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform_Wall_Mid"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_Wall_Mid/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Platform_Wall_Bottom" type="Sprite" parent="."]
+position = Vector2( 402.003, 1109.94 )
+texture = ExtResource( 7 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform_Wall_Bottom"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_Wall_Bottom/StaticBody2D"]
+shape = SubResource( 2 )
+
 [node name="Platform_Thick_Large" type="Sprite" parent="."]
 position = Vector2( 1480, 172 )
 texture = ExtResource( 2 )
@@ -39,7 +75,7 @@ texture = ExtResource( 2 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_Thick_Large/StaticBody2D"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Platform_Thin_Small" type="Sprite" parent="."]
 position = Vector2( 405, 421 )
@@ -50,7 +86,7 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_Thin_Small/StaticBody2D"]
 rotation = 6.28318
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 one_way_collision = true
 
 [node name="Platform_Thin_Large" type="Sprite" parent="."]
@@ -61,5 +97,5 @@ texture = ExtResource( 4 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform_Thin_Large/StaticBody2D"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 one_way_collision = true

@@ -80,17 +80,18 @@ tile_set = ExtResource( 3 )
 collision_layer = 2
 format = 1
 
-[node name="Structure" type="Node" parent="."]
+[node name="Structure" type="Node2D" parent="."]
 
-[node name="Hazards" type="Node" parent="."]
+[node name="Hazards" type="Node2D" parent="."]
 
-[node name="Decoration" type="Node" parent="."]
+[node name="Decoration" type="Node2D" parent="."]
 
 [node name="ExitDoor" type="Sprite" parent="."]
 position = Vector2( 6013.08, 3089.08 )
 texture = ExtResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="ExitDoor"]
+collision_layer = 2
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]

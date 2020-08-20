@@ -2,7 +2,7 @@ extends Node2D
 
 export var reverse = false
 var is_pushing = false
-var push_direction = 400
+var push_direction = 500
 var current_direction = 0
 var reversal 
 
