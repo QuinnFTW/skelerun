@@ -23,6 +23,7 @@ func hurt():
 	update_GUI()
 	if lives < 0:
 		end_game()
+	
 		
 func lives_up():
 	lives += 1

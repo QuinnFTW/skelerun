@@ -11,9 +11,13 @@ var motion = Vector2(0,0)
 var time_out = false
 var stun_time_out = false
 var hurt = false
+var invincible = false
+var override = false
 var is_being_pushed = false
 var push_dir = 0
 var is_frozen = false
+var bone_scene = load(\"res://Bone.tscn\")
+var explosion_speed = 6000
 
 signal animate
 
@@ -43,6 +47,11 @@ func _process(delta):
 		self.modulate.a = 0.5
 		yield(get_tree(), \"idle_frame\") 
 		self.modulate.a = 1.0
+	if not time_out and stun_time_out:
+		invincible = true
+	else:
+		invincible = false
+	
 	
 func apply_gravity():
 	if position.y > WORLD_LIMIT:
@@ -65,7 +74,7 @@ func move():
 		motion.x = 0
 	
 func animate():
-	emit_signal(\"animate\", motion)
+	emit_signal(\"animate\", motion, hurt, stun_time_out)
 
 func jump():
 	if Input.is_action_just_pressed(\"jump\") and is_on_floor() and not stun_time_out and not is_frozen:
@@ -79,12 +88,15 @@ func hurt():
 		position.y -= 1
 		yield(get_tree(), \"idle_frame\") 
 #		motion.y -= HURT_JUMP
+		for i in range(7):
+			bone_explosion()
 		$HurtSFX.play()
 		$Timer.start()
 		$StunTimer.start()
 		stun_time_out = true
 		time_out = true
 		hurt = true
+		
 	
 func boost():
 	position.y -= 1
@@ -102,6 +114,7 @@ func _on_Timer_timeout():
 	time_out = false
 	hurt = false
 	
+	
 func _on_StunTimer_timeout():
 	stun_time_out = false
 	
@@ -114,6 +127,14 @@ func freeze():
 	
 func unfreeze():
 	is_frozen = false
+	
+func bone_explosion():
+	var bone = bone_scene.instance()
+	get_parent().add_child(bone)
+	bone.position = position
+	randomize()
+	bone.rotation_degrees = rand_range(0, 360)
+	bone.apply_impulse(Vector2(), Vector2(explosion_speed, 0).rotated(bone.rotation_degrees))
 
 
 "
@@ -122,7 +143,7 @@ func unfreeze():
 "Player",
 ]]
 position = Vector2( 508.096, 389.244 )
-collision_mask = 14
+collision_mask = 78
 script = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -132,7 +153,9 @@ __meta__ = {
 polygon = PoolVector2Array( -5.10541, 183.556, 87.0405, 63.6913, 90.7863, -123.597, 1.63696, -184.279, -102.495, -123.597, -105.492, 54.7014 )
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
-frame = 1
+animation = "fall"
+frame = 11
+playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2( 3, 3 )

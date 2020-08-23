@@ -4,7 +4,8 @@ var levels_to_generate
 var levels_generated 
 var levels = ["res://Levels/RoomArray/l_000.tscn","res://Levels/RoomArray/l_001.tscn",
 "res://Levels/RoomArray/l_002.tscn","res://Levels/RoomArray/l_003.tscn",
-"res://Levels/RoomArray/l_004.tscn","res://Levels/RoomArray/l_005.tscn"]
+"res://Levels/RoomArray/l_004.tscn","res://Levels/RoomArray/l_005.tscn",
+"res://Levels/RoomArray/l_006.tscn","res://Levels/RoomArray/l_007.tscn"]
 var active_level
 var index = -1
 
