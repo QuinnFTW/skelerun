@@ -2,9 +2,9 @@ extends Node2D
 
 var levels_to_generate
 var levels_generated 
-var levels = ["res://Levels/RoomArray/TestRoom01(2).tscn","res://Levels/RoomArray/TestRoom01(3).tscn",
-"res://Levels/RoomArray/TestRoom01(4).tscn","res://Levels/RoomArray/TestRoom01.tscn", "res://Levels/RoomArray/TestRoomV2.tscn",
-"res://Levels/RoomArray/l_000.tscn"]
+var levels = ["res://Levels/RoomArray/l_000.tscn","res://Levels/RoomArray/l_001.tscn",
+"res://Levels/RoomArray/l_002.tscn","res://Levels/RoomArray/l_003.tscn",
+"res://Levels/RoomArray/l_004.tscn","res://Levels/RoomArray/l_005.tscn"]
 var active_level
 var index = -1
 

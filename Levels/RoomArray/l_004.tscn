@@ -1,0 +1,169 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
+[ext_resource path="res://Structure/Tileset_Dungeon.tres" type="TileSet" id=3]
+[ext_resource path="res://GFX/SPRITES/Room_Border_Large.png" type="Texture" id=4]
+[ext_resource path="res://GFX/SPRITES/backdrop_Large.png" type="Texture" id=5]
+[ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=6]
+[ext_resource path="res://GFX/SPRITES/door_gateClosed.png" type="Texture" id=7]
+[ext_resource path="res://GFX/SPRITES/door_open.png" type="Texture" id=8]
+[ext_resource path="res://Hazards/Thwomp.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/Sawblade.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hazards/Spikes.tscn" type="PackedScene" id=11]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 3075.12, 1143.66 )
+b = Vector2( -3150.68, 1140.95 )
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -2958.57, 2317.04 )
+b = Vector2( -2963.73, -826.825 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 2957.47, 1558.55 )
+b = Vector2( 2957.47, -1549.18 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 2971.85, -1554.34 )
+b = Vector2( -2964.84, -1549.18 )
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -1099.64, 708.567, 0, 0, 0, 0, 156.159, 706.804, 0, 0, 0, 0, 161.816, 203.344, 0, 0, 0, 0, 351.321, 209.001, 0, 0, 0, 0, 365.463, 1261.18, 0, 0, 0, 0, 1626.94, 1280.97, 0, 0, 0, 0, 1629.77, 200.516, 0, 0, 0, 0, 1819.27, 200.516, 0, 0, 0, 0, 1827.66, 1299.05, 0, 0, 0, 0, 2666.96, 1287.15, 0, 0, 0, 0, 2660.61, 1477.64, 0, 0, 0, 0, 162.042, 1477.64, 0, 0, 0, 0, 155.692, 899.823, 0, 0, 0, 0, -1107.88, 902.998, 0, 0, 0, 0, -1101.53, 706.16, 0, 0, 0, 0, -1101.32, 706.885 )
+}
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 157.425, 181.634, 0, 0, 0, 0, 162.465, 1466.75, 0, 0, 0, 0, 369.092, 1469.27, 0, 0, 0, 0, 350.953, 187.642, 0, 0, 0, 0, 349.015, 184.994, 0, 0, 0, 0, 160.022, 181.699 )
+}
+
+[sub_resource type="Curve2D" id=8]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 135.191, -1.57715, 0, 0, 0, 0, 131.932, 1483.21, 0, 0, 0, 0, 396.23, 1488.55, 0, 0, 0, 0, 422.927, -3.80197, 0, 0, 0, 0, 135.191, -4.75552, 0, 0, 0, 0, 136.25, 2.66071 )
+}
+
+[sub_resource type="Curve2D" id=9]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 361.949, 195.516, 0, 0, 0, 0, -2132.72, 204.001, 0, 0, 0, 0, -2152.52, -372.998, 0, 0, 0, 0, -3416.83, -378.655, 0, 0, 0, 0, -3414, -576.645, 0, 0, 0, 0, -2149.69, -573.816, 0, 0, 0, 0, -2141.21, -1082.93, 0, 0, 0, 0, -1954.53, -1082.93, 0, 0, 0, 0, -1929.08, -5.30249, 0, 0, 0, 0, -653.457, 3.18286, 0, 0, 0, 0, -684.57, -1074.45, 0, 0, 0, 0, -483.751, -1077.28, 0, 0, 0, 0, -466.781, 3.18286, 0, 0, 0, 0, 361.948, 8.8396, 0, 0, 0, 0, 361.948, 189.859 )
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 134.394, 256.651 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RoomBase" type="Node2D" parent="."]
+position = Vector2( 634.967, 356.201 )
+
+[node name="Backdrop" type="Sprite" parent="RoomBase"]
+position = Vector2( 2551.4, 1433.98 )
+z_index = -5
+texture = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="RoomBase"]
+position = Vector2( -645.294, -362.589 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 3.3, 3.3 )
+
+[node name="RoomBorder" type="Sprite" parent="RoomBase"]
+position = Vector2( 2560, 1440 )
+texture = ExtResource( 4 )
+
+[node name="Floor" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Floor"]
+position = Vector2( -18, 410.202 )
+shape = SubResource( 1 )
+
+[node name="LeftWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+position = Vector2( 0, -743 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/LeftWall"]
+shape = SubResource( 2 )
+
+[node name="RightWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/RightWall"]
+shape = SubResource( 3 )
+
+[node name="Ceiling" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Ceiling"]
+shape = SubResource( 4 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 262226, 1073741830, 0, 458834, 1073741829, 0, 655442, 1073741829, 0, 786436, 1, 0, 786518, 2, 0, 852050, 1073741829, 0, 1048593, 1073741830, 0, 1048658, 1073741829, 0, 1114149, -1073741823, 0, 1114172, -1610612735, 0, 1245201, 1073741829, 0, 1245266, 1073741829, 0, 1310806, 2, 0, 1441809, 1073741828, 0, 1441874, 1073741829, 0, 1638417, 1, 0, 1638445, 2, 0, 1638482, 1073741828, 0, 1835094, 2, 0, 2228264, 1610612737, 0, 2228287, 1610612737, 0, 2228300, 1, 0 )
+
+[node name="Structure" type="Node2D" parent="."]
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="Thwomp" parent="Hazards" instance=ExtResource( 9 )]
+position = Vector2( 3182.4, 539.391 )
+
+[node name="Sawblade" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 2207.09, 886.094 )
+curve = SubResource( 6 )
+
+[node name="Sawblade2" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 3675.33, 903 )
+curve = SubResource( 7 )
+
+[node name="Sawblade3" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 2207.13, 903 )
+curve = SubResource( 7 )
+
+[node name="Sawblade4" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 5125.1, 308.317 )
+curve = SubResource( 8 )
+
+[node name="Sawblade5" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 5676.9, 1782.93 )
+rotation = 3.13084
+curve = SubResource( 8 )
+
+[node name="Spikes" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 6094.6, 1044.66 )
+rotation = -1.5708
+
+[node name="Spikes2" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 6094.6, 1561.38 )
+rotation = -1.5708
+
+[node name="Spikes3" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 4692.18, 2106.76 )
+
+[node name="Sawblade6" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 4505.02, 2171.14 )
+curve = SubResource( 9 )
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="ExitDoor" type="Sprite" parent="."]
+position = Vector2( 6013.08, 511.14 )
+texture = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="ExitDoor"]
+collision_layer = 2
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
+shape = SubResource( 5 )
+
+[node name="EntranceDoor" type="Sprite" parent="."]
+position = Vector2( 388.056, 525.181 )
+texture = ExtResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 753.246, 591.611 )
+[connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]

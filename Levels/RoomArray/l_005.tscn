@@ -1,0 +1,200 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
+[ext_resource path="res://Structure/Tileset_Dungeon.tres" type="TileSet" id=3]
+[ext_resource path="res://GFX/SPRITES/Room_Border_Large.png" type="Texture" id=4]
+[ext_resource path="res://GFX/SPRITES/backdrop_Large.png" type="Texture" id=5]
+[ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=6]
+[ext_resource path="res://GFX/SPRITES/door_gateClosed.png" type="Texture" id=7]
+[ext_resource path="res://GFX/SPRITES/door_open.png" type="Texture" id=8]
+[ext_resource path="res://Hazards/Trapdoor.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/Spikes.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hazards/Torchy.tscn" type="PackedScene" id=12]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 3075.12, 1143.66 )
+b = Vector2( -3150.68, 1140.95 )
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -2958.57, 2317.04 )
+b = Vector2( -2963.73, -826.825 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 2957.47, 1558.55 )
+b = Vector2( 2957.47, -1549.18 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 2971.85, -1554.34 )
+b = Vector2( -2964.84, -1549.18 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 134.394, 256.651 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RoomBase" type="Node2D" parent="."]
+position = Vector2( 634.967, 356.201 )
+
+[node name="Backdrop" type="Sprite" parent="RoomBase"]
+position = Vector2( 2551.4, 1433.98 )
+z_index = -5
+texture = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="RoomBase"]
+position = Vector2( -645.294, -362.589 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 3.3, 3.3 )
+
+[node name="RoomBorder" type="Sprite" parent="RoomBase"]
+position = Vector2( 2560, 1440 )
+texture = ExtResource( 4 )
+
+[node name="Floor" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Floor"]
+position = Vector2( -18, 410.202 )
+shape = SubResource( 1 )
+
+[node name="LeftWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+position = Vector2( 0, -743 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/LeftWall"]
+shape = SubResource( 2 )
+
+[node name="RightWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/RightWall"]
+shape = SubResource( 3 )
+
+[node name="Ceiling" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Ceiling"]
+shape = SubResource( 4 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 327772, 1073741830, 0, 524380, 1073741829, 0, 720988, 1073741829, 0, 786436, 1073741824, 0, 786446, 1073741824, 0, 786466, 1073741824, 0, 786476, 1073741824, 0, 786486, 1073741824, 0, 786506, 1073741824, 0, 786516, 1073741824, 0, 917596, 1073741829, 0, 1114204, 1073741829, 0, 1310812, 1073741829, 0, 1441796, 1073741824, 0, 1441816, 1073741824, 0, 1441826, 1073741824, 0, 1441846, 1073741824, 0, 1441856, 1073741824, 0, 1441866, 1073741824, 0, 1441876, 1073741824, 0, 1507420, 1073741829, 0, 1704028, 1073741829, 0, 1900636, 1073741829, 0, 2097156, 1073741824, 0, 2097166, 1073741824, 0, 2097176, 1073741824, 0, 2097196, 1073741824, 0, 2097206, 1073741824, 0, 2097226, 1073741824, 0, 2097236, 1073741824, 0, 2097244, 1073741829, 0, 2293852, 1073741829, 0, 2490460, 1073741829, 0, 2686980, 1073741824, 0, 2686990, 1073741824, 0, 2687000, 1073741824, 0, 2687020, 1073741824, 0, 2687030, 1073741824, 0, 2687040, 1073741824, 0, 2687060, 1073741824, 0, 2687068, 1073741828, 0 )
+
+[node name="Structure" type="Node2D" parent="."]
+
+[node name="Trapdoor" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 1854.83, 927.724 )
+
+[node name="Trapdoor2" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 4412.35, 927.724 )
+
+[node name="Trapdoor3" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 3136.24, 1579.13 )
+
+[node name="Trapdoor4" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 1214.07, 1579.13 )
+
+[node name="Trapdoor5" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 2490.18, 2214.51 )
+
+[node name="Trapdoor6" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 4412.35, 2214.51 )
+
+[node name="Trapdoor7" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 5053.07, 2785.82 )
+
+[node name="Trapdoor8" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 2495.52, 2785.82 )
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="Spikes" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 2525.52, 3289.05 )
+
+[node name="Spikes2" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 1212.03, 1980.9 )
+
+[node name="SpikeTrapDuo" type="Node2D" parent="Hazards"]
+
+[node name="SpikeTrap" parent="Hazards/SpikeTrapDuo" instance=ExtResource( 11 )]
+position = Vector2( 1718.21, 1367.65 )
+
+[node name="SpikeTrap2" parent="Hazards/SpikeTrapDuo" instance=ExtResource( 11 )]
+position = Vector2( 1989.73, 1367.65 )
+
+[node name="SpikeTrapDuo2" type="Node2D" parent="Hazards"]
+position = Vector2( 1310.32, 650.119 )
+
+[node name="SpikeTrap" parent="Hazards/SpikeTrapDuo2" instance=ExtResource( 11 )]
+position = Vector2( 1718.21, 1367.65 )
+
+[node name="SpikeTrap2" parent="Hazards/SpikeTrapDuo2" instance=ExtResource( 11 )]
+position = Vector2( 1989.73, 1367.65 )
+
+[node name="SpikeTrapDuo3" type="Node2D" parent="Hazards"]
+position = Vector2( 1380.87, 1945.32 )
+
+[node name="SpikeTrap" parent="Hazards/SpikeTrapDuo3" instance=ExtResource( 11 )]
+position = Vector2( 1718.21, 1367.65 )
+
+[node name="SpikeTrap2" parent="Hazards/SpikeTrapDuo3" instance=ExtResource( 11 )]
+position = Vector2( 1989.73, 1367.65 )
+
+[node name="SpikeTrapDuo4" type="Node2D" parent="Hazards"]
+position = Vector2( 1930.2, 1945.32 )
+
+[node name="SpikeTrap" parent="Hazards/SpikeTrapDuo4" instance=ExtResource( 11 )]
+position = Vector2( 1718.21, 1367.65 )
+
+[node name="SpikeTrap2" parent="Hazards/SpikeTrapDuo4" instance=ExtResource( 11 )]
+position = Vector2( 1989.73, 1367.65 )
+
+[node name="SpikeTrapDuo5" type="Node2D" parent="Hazards"]
+position = Vector2( 2479.52, 1945.32 )
+
+[node name="SpikeTrap" parent="Hazards/SpikeTrapDuo5" instance=ExtResource( 11 )]
+position = Vector2( 1718.21, 1367.65 )
+
+[node name="SpikeTrap2" parent="Hazards/SpikeTrapDuo5" instance=ExtResource( 11 )]
+position = Vector2( 1989.73, 1367.65 )
+
+[node name="Torchy" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 651.489, 1164.59 )
+
+[node name="Torchy2" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 651.489, 2409.39 )
+
+[node name="Torchy3" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 5674.03, 1164.59 )
+
+[node name="Torchy4" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 5674.03, 2409.39 )
+
+[node name="Torchy5" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 3159.58, 2409.39 )
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="ExitDoor" type="Sprite" parent="."]
+position = Vector2( 6013.08, 3089.08 )
+texture = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="ExitDoor"]
+collision_layer = 2
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
+shape = SubResource( 5 )
+
+[node name="EntranceDoor" type="Sprite" parent="."]
+position = Vector2( 388.056, 510.421 )
+texture = ExtResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 753.246, 576.851 )
+[connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]
