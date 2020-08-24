@@ -30,17 +30,17 @@ b = Vector2( 2957.47, -1549.18 )
 a = Vector2( 2971.85, -1554.34 )
 b = Vector2( -2964.84, -1549.18 )
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=5]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 345.493, 185.64, 0, 0, 0, 0, 340.634, 2542.27, 0, 0, 0, 0, 151.859, 2542.27, 0, 0, 0, 0, 144.309, 182.587, 0, 0, 0, 0, 348.185, 186.362 )
 }
 
-[sub_resource type="Curve2D" id=7]
+[sub_resource type="Curve2D" id=6]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 345.493, 185.64, 0, 0, 0, 0, 339.229, 1387.46, 0, 0, 0, 0, 68.0894, 1406.49, 0, 0, 0, 0, 63.3325, 179.227, 0, 0, 0, 0, 348.185, 186.362 )
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 134.394, 256.651 )
 
 [node name="Level" type="Node2D"]
@@ -94,7 +94,7 @@ shape = SubResource( 4 )
 tile_set = ExtResource( 3 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 327746, 1073741830, 0, 524354, 1073741829, 0, 720962, 1073741829, 0, 786436, 1073741825, 0, 786456, 1073741824, 0, 786466, 536870913, 0, 917570, 1073741829, 0, 983051, -2147483647, 0, 983110, 536870914, 0, 983117, 536870915, 0, 983120, -2147483647, 0, 1114178, 1073741829, 0, 1310786, 1073741829, 0, 1441812, 536870912, 0, 1441822, 536870916, 0, 1441826, 536870913, 0, 1441838, 536870913, 0, 1441858, 536870918, 0, 1572934, 536870914, 0, 1638420, -2147483647, 0, 2097163, -2147483647, 0, 2097175, 536870914, 0, 2097182, 536870916, 0, 2097186, 536870912, 0, 2097194, 536870913, 0, 2097208, 536870912, 0, 2097218, 536870916, 0, 2097222, 536870912, 0, 2162718, 1073741829, 0, 2359326, 1073741829, 0, 2490391, 536870914, 0, 2555934, 1073741829, 0, 2687022, 536870913, 0, 2687042, 1073741824, 0, 2687052, 1073741825, 0, 2752542, 1073741829, 0, 2883606, 536870914, 0, 2949150, 1073741829, 0, 3145758, 1073741828, 0 )
+tile_data = PoolIntArray( 327746, 1073741830, 0, 524354, 1073741829, 0, 720962, 1073741829, 0, 786436, 1073741825, 0, 786456, 1073741824, 0, 786466, 536870913, 0, 786486, 2, 0, 917570, 1073741829, 0, 983051, -2147483647, 0, 983110, 536870914, 0, 983117, 536870915, 0, 983120, -2147483647, 0, 1114178, 1073741829, 0, 1310786, 1073741829, 0, 1441812, 536870912, 0, 1441822, 536870916, 0, 1441826, 536870913, 0, 1441838, 536870913, 0, 1441858, 536870918, 0, 1572934, 536870914, 0, 1638420, -2147483647, 0, 2097163, -2147483647, 0, 2097175, 536870914, 0, 2097182, 536870916, 0, 2097186, 536870912, 0, 2097194, 536870913, 0, 2097208, 536870912, 0, 2097218, 536870916, 0, 2097222, 536870912, 0, 2162718, 1073741829, 0, 2359326, 1073741829, 0, 2490391, 536870914, 0, 2555934, 1073741829, 0, 2687012, 2, 0, 2687022, 536870913, 0, 2687042, 1073741824, 0, 2687052, 1073741825, 0, 2752542, 1073741829, 0, 2883606, 536870914, 0, 2949150, 1073741829, 0, 3145758, 1073741828, 0 )
 
 [node name="Structure" type="Node2D" parent="."]
 
@@ -103,28 +103,28 @@ tile_data = PoolIntArray( 327746, 1073741830, 0, 524354, 1073741829, 0, 720962, 
 [node name="SpikeTrapRow" type="Node2D" parent="Hazards"]
 
 [node name="SpikeTrap" parent="Hazards/SpikeTrapRow" instance=ExtResource( 9 )]
-position = Vector2( 2384.92, 748.956 )
+position = Vector2( 2326.36, 748.956 )
 
 [node name="SpikeTrap2" parent="Hazards/SpikeTrapRow" instance=ExtResource( 9 )]
-position = Vector2( 2660.61, 748.956 )
+position = Vector2( 2602.05, 748.956 )
 
 [node name="SpikeTrap3" parent="Hazards/SpikeTrapRow" instance=ExtResource( 9 )]
-position = Vector2( 2936.3, 748.956 )
+position = Vector2( 2877.74, 748.956 )
 
 [node name="SpikeTrap4" parent="Hazards/SpikeTrapRow" instance=ExtResource( 9 )]
-position = Vector2( 3211.98, 748.956 )
+position = Vector2( 3153.42, 748.956 )
 
 [node name="SpikeTrap5" parent="Hazards/SpikeTrapRow" instance=ExtResource( 9 )]
-position = Vector2( 3481.81, 748.956 )
+position = Vector2( 3423.25, 748.956 )
 
 [node name="SpikeTrap6" parent="Hazards/SpikeTrapRow" instance=ExtResource( 9 )]
-position = Vector2( 3757.49, 748.956 )
+position = Vector2( 3698.93, 748.956 )
 
 [node name="SpikeTrap7" parent="Hazards/SpikeTrapRow" instance=ExtResource( 9 )]
-position = Vector2( 4033.18, 748.956 )
+position = Vector2( 3974.62, 748.956 )
 
 [node name="SpikeTrapRow2" type="Node2D" parent="Hazards"]
-position = Vector2( 0, 639.145 )
+position = Vector2( 39.0427, 639.145 )
 
 [node name="SpikeTrap" parent="Hazards/SpikeTrapRow2" instance=ExtResource( 9 )]
 position = Vector2( 2384.92, 748.956 )
@@ -148,7 +148,7 @@ position = Vector2( 3757.49, 748.956 )
 position = Vector2( 4033.18, 748.956 )
 
 [node name="SpikeTrapRow3" type="Node2D" parent="Hazards"]
-position = Vector2( 0, 1275.63 )
+position = Vector2( -68.3245, 1269.12 )
 
 [node name="SpikeTrap" parent="Hazards/SpikeTrapRow3" instance=ExtResource( 9 )]
 position = Vector2( 2384.92, 748.956 )
@@ -172,7 +172,7 @@ position = Vector2( 3757.49, 748.956 )
 position = Vector2( 4033.18, 748.956 )
 
 [node name="SpikeTrapRow4" type="Node2D" parent="Hazards"]
-position = Vector2( 0, 1856.53 )
+position = Vector2( 42.2959, 1856.53 )
 
 [node name="SpikeTrap" parent="Hazards/SpikeTrapRow4" instance=ExtResource( 9 )]
 position = Vector2( 2384.92, 748.956 )
@@ -235,22 +235,22 @@ rotation = -1.5708
 
 [node name="Sawblade" parent="Hazards" instance=ExtResource( 12 )]
 position = Vector2( 557.227, 784.647 )
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Sawblade2" parent="Hazards" instance=ExtResource( 12 )]
 position = Vector2( 1053.79, 3523.74 )
 rotation = 3.14159
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Sawblade3" parent="Hazards" instance=ExtResource( 12 )]
 position = Vector2( 2263.31, 3463.26 )
 rotation = 3.14159
-curve = SubResource( 7 )
+curve = SubResource( 6 )
 
 [node name="Sawblade4" parent="Hazards" instance=ExtResource( 12 )]
 position = Vector2( 4548.56, 1760.01 )
 rotation = 3.14159
-curve = SubResource( 7 )
+curve = SubResource( 6 )
 
 [node name="Torchy" parent="Hazards" instance=ExtResource( 13 )]
 position = Vector2( 4346.24, 918.37 )
@@ -275,7 +275,7 @@ collision_layer = 2
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="EntranceDoor" type="Sprite" parent="."]
 position = Vector2( 388.056, 510.719 )

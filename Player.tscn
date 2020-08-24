@@ -21,10 +21,12 @@ var explosion_speed = 6000
 
 signal animate
 
-const SPEED = 1000
-const GRAVITY = 200
+const SPEED = 1200
+const JUMP_SPEED = -3500
+const GRAVITY = 4000
+const ACCELERATION = 0.25
+const FRICTION = 0.1
 const UP = Vector2 (0, -1)
-const JUMP_SPEED = 4500
 const WORLD_LIMIT = 3000
 const BOOST_MULTIPLIER = 1.5
 const HURT_JUMP = 2000
@@ -33,7 +35,7 @@ func _ready():
 	add_to_group(\"Player\")
 
 func _physics_process(_delta):
-	apply_gravity()
+	apply_gravity(_delta)
 	move_and_slide(motion, UP)
 	move()
 	jump()
@@ -53,7 +55,7 @@ func _process(delta):
 		invincible = false
 	
 	
-func apply_gravity():
+func apply_gravity(_delta):
 	if position.y > WORLD_LIMIT:
 		get_tree().call_group(\"Gamestate\", \"end_game\")
 	if is_on_floor() and motion.y > 0 and not Input.is_action_pressed(\"jump\"):
@@ -61,24 +63,30 @@ func apply_gravity():
 	elif is_on_ceiling():
 		motion.y = 1
 	else:
-		motion.y += GRAVITY
+		motion.y += GRAVITY * _delta * 2.5
 		
 func move():
 	if stun_time_out == true:
-		motion.x = push_dir
+		motion.x = lerp(motion.x, push_dir, FRICTION * 10)
+		#motion.x = push_dir
 	elif Input.is_action_pressed(\"left\") and not Input.is_action_pressed(\"right\") and not is_frozen:
-		motion.x = -SPEED + push_dir 
+		motion.x = lerp(motion.x, -SPEED + push_dir, ACCELERATION)
+		#motion.x = -SPEED + push_dir
 	elif Input.is_action_pressed(\"right\") and not Input.is_action_pressed(\"left\") and not is_frozen:
-		motion.x = SPEED + push_dir  
+		motion.x = lerp(motion.x, SPEED + push_dir, ACCELERATION)
+		#motion.x = SPEED + push_dir
 	elif not is_being_pushed:
-		motion.x = 0
+		if motion.x > 100 or motion.x < -100:
+			motion.x = lerp(motion.x, push_dir, FRICTION)
+		else:
+			motion.x = 0
 	
 func animate():
 	emit_signal(\"animate\", motion, hurt, stun_time_out)
 
 func jump():
 	if Input.is_action_just_pressed(\"jump\") and is_on_floor() and not stun_time_out and not is_frozen:
-		motion.y -= JUMP_SPEED
+		motion.y = JUMP_SPEED
 		$JumpSFX.play()
 	
 func hurt():
@@ -150,11 +158,11 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -5.10541, 183.556, 87.0405, 63.6913, 90.7863, -123.597, 1.63696, -184.279, -102.495, -123.597, -105.492, 54.7014 )
+polygon = PoolVector2Array( -36.4359, 188.185, 30.8668, 188.185, 87.0405, 63.6913, 90.7863, -123.597, 1.63696, -184.279, -102.495, -123.597, -105.492, 54.7014 )
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
 animation = "fall"
-frame = 11
+frame = 13
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
