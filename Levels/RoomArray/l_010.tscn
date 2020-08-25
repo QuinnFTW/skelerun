@@ -128,18 +128,16 @@ position = Vector2( -5778.77, -10.5735 )
 
 [node name="Torch" parent="Decoration" instance=ExtResource( 14 )]
 position = Vector2( 2119.64, 2779.33 )
-frame = 0
 
 [node name="Torch2" parent="Decoration" instance=ExtResource( 14 )]
 position = Vector2( 4298.68, 2801.07 )
-frame = 0
 
 [node name="ExitDoor" type="Sprite" parent="."]
 position = Vector2( 6002.21, 1909.9 )
 texture = ExtResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="ExitDoor"]
-collision_layer = 2
+collision_layer = 64
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]

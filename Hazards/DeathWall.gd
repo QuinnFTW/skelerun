@@ -3,7 +3,7 @@ extends AnimatedSprite
 var motion = Vector2(0,0)
 var start_position = position
 
-const SPEED = 1.5
+const SPEED = .5
 
 func _ready():
 	add_to_group("DeathWall")

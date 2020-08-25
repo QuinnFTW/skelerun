@@ -30,12 +30,12 @@ b = Vector2( 2957.47, -1549.18 )
 a = Vector2( 2971.85, -1554.34 )
 b = Vector2( -2964.84, -1549.18 )
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=5]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1006.69, 204.561, 0, 0, 0, 0, -3613.48, 164.091, 0, 0, 0, 0, -3607.08, 258.617, 0, 0, 0, 0, 1010.63, 288.251, 0, 0, 0, 0, 1006.69, 207.081, 0, 0, 0, 0, 1006.69, 204.561 )
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 134.394, 256.651 )
 
 [node name="Level" type="Node2D"]
@@ -119,12 +119,12 @@ position = Vector2( 4349.16, 599.132 )
 
 [node name="Sawblade" parent="Hazards" instance=ExtResource( 12 )]
 position = Vector2( 4530.24, 1975.55 )
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Sawblade2" parent="Hazards" instance=ExtResource( 12 )]
 position = Vector2( 1894.29, 2412.05 )
 rotation = 3.14159
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="SpikeTrap" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 3381.64, 1163.94 )
@@ -166,11 +166,11 @@ position = Vector2( 6013.08, 1812.52 )
 texture = ExtResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="ExitDoor"]
-collision_layer = 2
+collision_layer = 64
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="EntranceDoor" type="Sprite" parent="."]
 position = Vector2( 388.056, 1807.73 )

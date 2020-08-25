@@ -209,7 +209,7 @@ position = Vector2( 6013.08, 883.689 )
 texture = ExtResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="ExitDoor"]
-collision_layer = 2
+collision_layer = 64
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]

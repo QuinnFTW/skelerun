@@ -9,7 +9,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Structure/Tileset_Dungeon.tres" type="TileSet" id=8]
 [ext_resource path="res://Hazards/Conveyor.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Hazards/Trapdoor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Structure/Trapdoor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Hazards/Spikes.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=13]
@@ -262,7 +262,7 @@ position = Vector2( 6013.08, 692.482 )
 texture = ExtResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="ExitDoor"]
-collision_layer = 2
+collision_layer = 64
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]

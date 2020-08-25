@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hurt(blurble).wav-120b92556433eecdb2ceb08df63a731a.sample"
+
+[deps]
+
+source_file="res://SFX/hurt(blurble).wav"
+dest_files=[ "res://.import/hurt(blurble).wav-120b92556433eecdb2ceb08df63a731a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

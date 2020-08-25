@@ -86,7 +86,7 @@ shape = SubResource( 4 )
 tile_set = ExtResource( 3 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 786508, 536870914, 0, 786518, 536870912, 0, 1376332, 536870914, 0, 1638451, 536870912, 0, 1835028, 536870912, 0, 1966156, 536870912, 0, 2097190, 536870912, 0, 2293764, 536870912, 0, 2490432, 536870912, 0, 2949137, 0, 0 )
+tile_data = PoolIntArray( 786508, 536870914, 0, 786518, 536870912, 0, 1376332, 536870914, 0, 1638451, 536870912, 0, 1835028, 536870912, 0, 1966156, 536870912, 0, 2097190, 536870912, 0, 2293764, 536870912, 0, 2293798, 4, 0, 2490406, 5, 0, 2490432, 536870912, 0, 2687014, 5, 0, 2883622, 5, 0, 2883634, 2, 0, 2949137, 0, 0, 3080230, 6, 0 )
 
 [node name="Structure" type="Node2D" parent="."]
 
@@ -122,7 +122,7 @@ position = Vector2( 6013.08, 512.573 )
 texture = ExtResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="ExitDoor"]
-collision_layer = 2
+collision_layer = 64
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]

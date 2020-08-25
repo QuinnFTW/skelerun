@@ -8,13 +8,14 @@
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=6]
 [ext_resource path="res://Hazards/Sawblade.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Hazards/Trapdoor.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Structure/Trapdoor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Hazards/Conveyor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Hazards/Conveyor_Doublewide.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Hazards/Thwomp.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Hazards/Torchy.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Hazards/TorchyDark.tscn" type="PackedScene" id=15]
+
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 3075.12, 1143.66 )

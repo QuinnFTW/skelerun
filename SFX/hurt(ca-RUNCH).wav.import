@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hurt(ca-RUNCH).wav-ad854f18b9bca1248908356d6f56e4f2.sample"
+
+[deps]
+
+source_file="res://SFX/hurt(ca-RUNCH).wav"
+dest_files=[ "res://.import/hurt(ca-RUNCH).wav-ad854f18b9bca1248908356d6f56e4f2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

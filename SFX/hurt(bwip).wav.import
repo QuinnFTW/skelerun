@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hurt(bwip).wav-9780e2a844b07e923061d22a7fab0d2b.sample"
+
+[deps]
+
+source_file="res://SFX/hurt(bwip).wav"
+dest_files=[ "res://.import/hurt(bwip).wav-9780e2a844b07e923061d22a7fab0d2b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

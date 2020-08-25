@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hurt(plplll).wav-c037c4dda5d47578de6d901c1e3593cc.sample"
+
+[deps]
+
+source_file="res://SFX/hurt(plplll).wav"
+dest_files=[ "res://.import/hurt(plplll).wav-c037c4dda5d47578de6d901c1e3593cc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

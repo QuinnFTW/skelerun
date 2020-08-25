@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://PlayerAnimation.tscn" type="PackedScene" id=1]
-[ext_resource path="res://SFX/jump1.ogg" type="AudioStream" id=6]
-[ext_resource path="res://SFX/pain.ogg" type="AudioStream" id=7]
+[ext_resource path="res://SFX/hurt(ca-RUNCH).wav" type="AudioStream" id=2]
+[ext_resource path="res://SFX/jump2.wav" type="AudioStream" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody2D
@@ -22,7 +22,7 @@ var explosion_speed = 6000
 signal animate
 
 const SPEED = 1200
-const JUMP_SPEED = -3500
+const JUMP_SPEED = -3800
 const GRAVITY = 4000
 const ACCELERATION = 0.25
 const FRICTION = 0.1
@@ -173,11 +173,11 @@ drag_margin_v_enabled = true
 smoothing_enabled = true
 
 [node name="JumpSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -8.078
+stream = ExtResource( 3 )
+volume_db = -3.0
 
 [node name="HurtSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 2 )
 volume_db = -3.029
 
 [node name="Timer" type="Timer" parent="."]
