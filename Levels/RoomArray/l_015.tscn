@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
@@ -8,9 +8,8 @@
 [ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=6]
 [ext_resource path="res://GFX/SPRITES/door_gateClosed.png" type="Texture" id=7]
 [ext_resource path="res://GFX/SPRITES/door_open.png" type="Texture" id=8]
-[ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=10]
-[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/Sawblade.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 3075.12, 1143.66 )
@@ -48,7 +47,7 @@ anchor_mode = 0
 current = true
 zoom = Vector2( 3.3, 3.3 )
 
-[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 11 )]
+[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 9 )]
 
 [node name="RoomBorder" type="Sprite" parent="RoomBase"]
 position = Vector2( 2560, 1440 )
@@ -84,38 +83,49 @@ shape = SubResource( 4 )
 tile_set = ExtResource( 3 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 262213, 4, 0, 458781, 4, 0, 458821, 5, 0, 655389, 5, 0, 655429, 5, 0, 851997, 6, 0, 852023, 4, 0, 852037, 5, 0, 917549, 2, 0, 917563, 2, 0, 917579, 3, 0, 1048597, 4, 0, 1048631, 5, 0, 1048645, 5, 0, 1245205, 6, 0, 1245239, 5, 0, 1245253, 5, 0, 1376269, 4, 0, 1441847, 5, 0, 1441861, 5, 0, 1507373, 2, 0, 1507387, 2, 0, 1507403, 3, 0, 1572877, 5, 0, 1638413, 5, 0, 1638455, 5, 0, 1638469, 5, 0, 1835021, 6, 0, 1835063, 5, 0, 1835077, 5, 0, 2031657, 4, 0, 2031661, 0, 0, 2031671, 6, 0, 2031675, 2, 0, 2031685, 6, 0, 2031691, 3, 0, 2228265, 5, 0, 2424873, 5, 0, 2621467, 4, 0, 2621471, 0, 0, 2621481, 6, 0, 2621496, 1, 0, 2621516, 1, 0, 2818075, 5, 0, 3014683, 5, 0, 3211281, 0, 0, 3211291, 6, 0 )
+tile_data = PoolIntArray( 393233, 4, 0, 393261, 4, 0, 393287, 4, 0, 589841, 5, 0, 589869, 5, 0, 589895, 5, 0, 786449, 5, 0, 786477, 5, 0, 786503, 5, 0, 983057, 5, 0, 983085, 5, 0, 983111, 5, 0, 1048608, 4, 0, 1048634, 4, 0, 1048660, 4, 0, 1114126, 2, 0, 1179665, 5, 0, 1179693, 5, 0, 1179719, 5, 0, 1245216, 5, 0, 1245239, 2, 0, 1245242, 5, 0, 1245268, 5, 0, 1310749, 2, 0, 1376273, 5, 0, 1376301, 5, 0, 1376327, 5, 0, 1376337, 2, 0, 1441824, 5, 0, 1441850, 5, 0, 1441876, 5, 0, 1572878, 2, 0, 1572881, 5, 0, 1572909, 5, 0, 1572935, 5, 0, 1638432, 5, 0, 1638458, 5, 0, 1638484, 5, 0, 1769489, 5, 0, 1769517, 5, 0, 1769540, 2, 0, 1769543, 5, 0, 1835040, 5, 0, 1835050, 2, 0, 1835066, 5, 0, 1835092, 5, 0, 1966097, 5, 0, 1966125, 5, 0, 1966151, 5, 0, 2031630, 2, 0, 2031648, 5, 0, 2031674, 5, 0, 2031700, 5, 0, 2162705, 5, 0, 2162733, 5, 0, 2162759, 5, 0, 2228256, 5, 0, 2228282, 5, 0, 2228292, 2, 0, 2228308, 5, 0, 2293802, 2, 0, 2359313, 5, 0, 2359341, 5, 0, 2359367, 5, 0, 2424864, 5, 0, 2424890, 5, 0, 2424916, 5, 0, 2490397, 2, 0, 2555921, 6, 0, 2555949, 6, 0, 2555975, 6, 0, 2621472, 5, 0, 2621498, 5, 0, 2621524, 5, 0, 2752567, 2, 0, 2752593, 2, 0, 2818080, 5, 0, 2818106, 5, 0, 2818132, 5, 0, 2949149, 2, 0, 3014688, 5, 0, 3014714, 5, 0, 3014740, 5, 0, 3211296, 6, 0, 3211322, 6, 0, 3211348, 6, 0 )
 
 [node name="Structure" type="Node2D" parent="."]
 
 [node name="Hazards" type="Node2D" parent="."]
 
-[node name="Gargoyle" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 1177.59, 1708.07 )
+[node name="Sawblade" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 1016.85, 189.52 )
 
-[node name="Gargoyle2" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 1687.93, 1207.64 )
+[node name="Sawblade3" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 1957.78, 878.741 )
 
-[node name="Gargoyle3" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 2205.51, 686.224 )
+[node name="Sawblade2" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 2420.11, 3529.41 )
+rotation = -3.14159
 
-[node name="Gargoyle4" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 2971.54, 2374.52 )
+[node name="Sawblade6" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 3623.9, 878.741 )
 
-[node name="Gargoyle5" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 2074.48, 3064.96 )
+[node name="Sawblade7" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 4086.23, 3529.41 )
+rotation = -3.14159
 
-[node name="SpikeTrap" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 4240.75, 860.204 )
+[node name="Sawblade8" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 5290.02, 878.741 )
 
-[node name="SpikeTrap2" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 3969.92, 860.204 )
+[node name="Sawblade9" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 5752.34, 3529.41 )
+rotation = -3.14159
 
-[node name="SpikeTrap3" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 4240.75, 1434.37 )
+[node name="Sawblade10" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 4450.97, 213.493 )
 
-[node name="SpikeTrap4" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 3969.92, 1434.37 )
+[node name="Sawblade11" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 4913.29, 2864.16 )
+rotation = -3.14159
+
+[node name="Sawblade5" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 2790.84, 213.493 )
+
+[node name="Sawblade4" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 3247.17, 2882.14 )
+rotation = 3.14159
 
 [node name="Decoration" type="Node2D" parent="."]
 

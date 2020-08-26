@@ -98,6 +98,7 @@ func hurt():
 #		motion.y -= HURT_JUMP
 		for i in range(7):
 			bone_explosion()
+		get_tree().call_group(\"Camera\", \"start\")
 		$HurtSFX.play()
 		$Timer.start()
 		$StunTimer.start()
@@ -161,9 +162,7 @@ __meta__ = {
 polygon = PoolVector2Array( -36.4359, 188.185, 30.8668, 188.185, 87.0405, 63.6913, 90.7863, -123.597, 1.63696, -184.279, -102.495, -123.597, -105.492, 54.7014 )
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
-animation = "fall"
-frame = 13
-playing = true
+animation = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2( 3, 3 )

@@ -5,7 +5,11 @@ var levels_generated
 var levels = ["res://Levels/RoomArray/l_000.tscn","res://Levels/RoomArray/l_001.tscn",
 "res://Levels/RoomArray/l_002.tscn","res://Levels/RoomArray/l_003.tscn",
 "res://Levels/RoomArray/l_004.tscn","res://Levels/RoomArray/l_005.tscn",
-"res://Levels/RoomArray/l_006.tscn","res://Levels/RoomArray/l_007.tscn"]
+"res://Levels/RoomArray/l_006.tscn","res://Levels/RoomArray/l_007.tscn",
+"res://Levels/RoomArray/l_008.tscn","res://Levels/RoomArray/l_009.tscn",
+"res://Levels/RoomArray/l_010.tscn","res://Levels/RoomArray/l_011.tscn",
+"res://Levels/RoomArray/l_012.tscn", "res://Levels/RoomArray/l_013.tscn",
+"res://Levels/RoomArray/l_014.tscn","res://Levels/RoomArray/l_015.tscn"]
 var active_level
 var index = -1
 

@@ -5,10 +5,10 @@
 [ext_resource path="res://Hazards/Hazards.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 304.894, 305.069 )
+extents = Vector2( 251.858, 261.541 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 240.552, 10 )
+extents = Vector2( 240.552, 21.551 )
 
 [sub_resource type="Animation" id=3]
 step = 0.05
@@ -39,6 +39,7 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="SurfaceChecker" type="Area2D" parent="Sprite"]
+gravity_distance_scale = 1.0
 collision_layer = 4
 collision_mask = 2
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
@@ -8,10 +8,11 @@
 [ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=6]
 [ext_resource path="res://GFX/SPRITES/door_gateClosed.png" type="Texture" id=7]
 [ext_resource path="res://GFX/SPRITES/door_open.png" type="Texture" id=8]
-[ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Hazards/Sawblade.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=11]
-[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Hazards/Conveyor_Doublewide.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/Spikes.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=13]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 3075.12, 1143.66 )
@@ -86,7 +87,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "fire"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -133,7 +133,7 @@ anchor_mode = 0
 current = true
 zoom = Vector2( 3.3, 3.3 )
 
-[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 12 )]
+[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 13 )]
 
 [node name="RoomBorder" type="Sprite" parent="RoomBase"]
 position = Vector2( 2560, 1440 )
@@ -169,65 +169,98 @@ shape = SubResource( 4 )
 tile_set = ExtResource( 3 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 262173, 4, 0, 262211, 4, 0, 458781, 5, 0, 458819, 5, 0, 655389, 5, 0, 655427, 5, 0, 786436, 0, 0, 786480, 4, 0, 786518, 0, 0, 851997, 5, 0, 852035, 5, 0, 983050, 5, 0, 983085, 2, 0, 983088, 5, 0, 983126, 5, 0, 1048605, 5, 0, 1048643, 5, 0, 1179658, 5, 0, 1179696, 5, 0, 1179734, 5, 0, 1245213, 6, 0, 1245217, 0, 0, 1245223, 4, 0, 1245241, 4, 0, 1245243, 0, 0, 1245251, 6, 0, 1376266, 5, 0, 1376269, 0, 0, 1376295, 5, 0, 1376301, 2, 0, 1376304, 5, 0, 1376334, 0, 0, 1376342, 5, 0, 1441849, 5, 0, 1507367, 5, 0, 1572874, 5, 0, 1572883, 5, 0, 1572912, 5, 0, 1572921, 5, 0, 1572942, 5, 0, 1572950, 5, 0, 1703975, 5, 0, 1703993, 5, 0, 1769482, 5, 0, 1769491, 5, 0, 1769517, 2, 0, 1769520, 5, 0, 1769550, 5, 0, 1769558, 5, 0, 1900583, 6, 0, 1900601, 6, 0, 1966090, 5, 0, 1966099, 5, 0, 1966102, 0, 0, 1966128, 5, 0, 1966148, 0, 0, 1966158, 5, 0, 1966166, 5, 0, 2162698, 5, 0, 2162707, 5, 0, 2162716, 5, 0, 2162733, 2, 0, 2162736, 5, 0, 2162756, 5, 0, 2162766, 5, 0, 2162774, 5, 0, 2359306, 5, 0, 2359315, 5, 0, 2359324, 5, 0, 2359344, 5, 0, 2359364, 5, 0, 2359374, 5, 0, 2359382, 5, 0, 2555914, 5, 0, 2555923, 5, 0, 2555932, 5, 0, 2555935, 0, 0, 2555949, 2, 0, 2555952, 5, 0, 2555963, 0, 0, 2555972, 5, 0, 2555982, 5, 0, 2555990, 5, 0, 2752522, 5, 0, 2752531, 5, 0, 2752540, 5, 0, 2752549, 5, 0, 2752560, 5, 0, 2752571, 5, 0, 2752580, 5, 0, 2752590, 5, 0, 2752598, 5, 0, 2949130, 5, 0, 2949139, 5, 0, 2949148, 5, 0, 2949157, 5, 0, 2949168, 6, 0, 2949179, 5, 0, 2949188, 5, 0, 2949198, 5, 0, 2949206, 5, 0, 3145738, 6, 0, 3145747, 6, 0, 3145756, 6, 0, 3145765, 6, 0, 3145768, 1, 0, 3145787, 6, 0, 3145796, 6, 0, 3145806, 6, 0, 3145814, 6, 0 )
+tile_data = PoolIntArray( 262198, 1073741830, 0, 458806, 1073741829, 0, 655414, 1073741829, 0, 852022, 1073741829, 0, 917562, 1073741824, 0, 917581, 4, 0, 917585, 0, 0, 1048630, 1073741829, 0, 1114189, 1073741829, 0, 1245238, 1073741829, 0, 1310797, 1073741829, 0, 1441834, 4, 0, 1441846, 1073741829, 0, 1507395, 1073741824, 0, 1507405, 1073741829, 0, 1507414, 0, 0, 1638442, 5, 0, 1638454, 1073741829, 0, 1704013, 1073741829, 0, 1835050, 5, 0, 1835062, 1073741829, 0, 1900621, 1073741829, 0, 2031658, 5, 0, 2031670, 1073741829, 0, 2097210, 1073741824, 0, 2097229, 1073741829, 0, 2097233, 0, 0, 2228266, 5, 0, 2228278, 1073741829, 0, 2293837, 1073741829, 0, 2424874, 5, 0, 2424886, 1073741829, 0, 2490445, 1073741829, 0, 2621482, 5, 0, 2621494, 1073741829, 0, 2687053, 1073741829, 0, 2687062, 0, 0, 2752579, 1073741824, 0, 2818090, 5, 0, 2818102, 1073741828, 0, 2883661, 1073741829, 0, 3014698, 5, 0, 3080269, 1073741829, 0, 3145805, 1073741829, 0, 3211306, 6, 0, 3211341, 1073741828, 0 )
 
 [node name="Structure" type="Node2D" parent="."]
 
+[node name="Conveyor" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 1555.9, 2572.42 )
+rotation = -0.50597
+
+[node name="Conveyor3" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 1753.69, 1065.76 )
+rotation = -0.294446
+
+[node name="Conveyor2" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 1041.86, 1801.35 )
+rotation = 0.544951
+reverse = true
+
 [node name="Hazards" type="Node2D" parent="."]
 
-[node name="Gargoyle" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 3993.74, 1657.46 )
+[node name="Spikes" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 2464.99, 3292.55 )
 
-[node name="Gargoyle2" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 4632.96, 1035.2 )
+[node name="Gargoyle" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 316.784, 2279.71 )
 
-[node name="Gargoyle3" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 2203.84, 516.117 )
+[node name="Gargoyle7" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 316.784, 754.412 )
 
-[node name="Gargoyle4" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 4214.67, 516.117 )
+[node name="Gargoyle3" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 3798.83, 583.894 )
 
-[node name="AnimatedSprite" parent="Hazards/Gargoyle4" index="0"]
-flip_h = true
+[node name="Gargoyle4" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 5271.28, 1822.26 )
 
-[node name="AnimationPlayer" parent="Hazards/Gargoyle4" index="1"]
-anims/fire = SubResource( 5 )
-
-[node name="Gargoyle5" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 1780.5, 1040.24 )
-
-[node name="AnimatedSprite" parent="Hazards/Gargoyle5" index="0"]
-flip_h = true
-
-[node name="AnimationPlayer" parent="Hazards/Gargoyle5" index="1"]
-anims/fire = SubResource( 6 )
-
-[node name="Gargoyle6" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 2415.5, 1655.09 )
+[node name="Gargoyle6" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 6081.27, 1255.44 )
 
 [node name="AnimatedSprite" parent="Hazards/Gargoyle6" index="0"]
 flip_h = true
 
 [node name="AnimationPlayer" parent="Hazards/Gargoyle6" index="1"]
+anims/fire = SubResource( 5 )
+
+[node name="Gargoyle8" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 6081.27, 2440.94 )
+
+[node name="AnimatedSprite" parent="Hazards/Gargoyle8" index="0"]
+flip_h = true
+
+[node name="AnimationPlayer" parent="Hazards/Gargoyle8" index="1"]
+anims/fire = SubResource( 6 )
+
+[node name="Gargoyle2" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 2607.81, 1595.23 )
+
+[node name="AnimatedSprite" parent="Hazards/Gargoyle2" index="0"]
+flip_h = true
+
+[node name="AnimationPlayer" parent="Hazards/Gargoyle2" index="1"]
 anims/fire = SubResource( 7 )
 
-[node name="SpikeTrap" parent="Hazards" instance=ExtResource( 11 )]
-position = Vector2( 2865.54, 3033.63 )
+[node name="SpikeTrapRow" type="Node2D" parent="Hazards"]
+position = Vector2( -34.978, -3.77563 )
 
-[node name="SpikeTrap2" parent="Hazards" instance=ExtResource( 11 )]
-position = Vector2( 3566.75, 3033.63 )
+[node name="SpikeTrap" parent="Hazards/SpikeTrapRow" instance=ExtResource( 12 )]
+position = Vector2( 4804.73, 2658.17 )
 
-[node name="Sawblade" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 2731.05, 577.556 )
+[node name="SpikeTrap2" parent="Hazards/SpikeTrapRow" instance=ExtResource( 12 )]
+position = Vector2( 4541.68, 2658.17 )
 
-[node name="Sawblade2" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 3692.71, 3258.9 )
-rotation = 3.14159
+[node name="SpikeTrapRow2" type="Node2D" parent="Hazards"]
+position = Vector2( -616.405, -640.172 )
+
+[node name="SpikeTrap" parent="Hazards/SpikeTrapRow2" instance=ExtResource( 12 )]
+position = Vector2( 4804.73, 2658.17 )
+
+[node name="SpikeTrap2" parent="Hazards/SpikeTrapRow2" instance=ExtResource( 12 )]
+position = Vector2( 4541.68, 2658.17 )
+
+[node name="SpikeTrapRow3" type="Node2D" parent="Hazards"]
+position = Vector2( -34.978, -1212.28 )
+
+[node name="SpikeTrap" parent="Hazards/SpikeTrapRow3" instance=ExtResource( 12 )]
+position = Vector2( 4804.73, 2658.17 )
+
+[node name="SpikeTrap2" parent="Hazards/SpikeTrapRow3" instance=ExtResource( 12 )]
+position = Vector2( 4541.68, 2658.17 )
 
 [node name="Decoration" type="Node2D" parent="."]
 
 [node name="ExitDoor" type="Sprite" parent="."]
-position = Vector2( 6013.08, 501.911 )
+position = Vector2( 6013.08, 3089.08 )
 texture = ExtResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="ExitDoor"]
@@ -238,15 +271,15 @@ script = ExtResource( 6 )
 shape = SubResource( 8 )
 
 [node name="EntranceDoor" type="Sprite" parent="."]
-position = Vector2( 388.056, 497.121 )
+position = Vector2( 388.056, 3084.29 )
 texture = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 753.246, 563.551 )
+position = Vector2( 699.307, 3162.71 )
 [connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]
 
-[editable path="Hazards/Gargoyle4"]
-
-[editable path="Hazards/Gargoyle5"]
-
 [editable path="Hazards/Gargoyle6"]
+
+[editable path="Hazards/Gargoyle8"]
+
+[editable path="Hazards/Gargoyle2"]

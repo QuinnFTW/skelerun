@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
@@ -8,9 +8,12 @@
 [ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=6]
 [ext_resource path="res://GFX/SPRITES/door_gateClosed.png" type="Texture" id=7]
 [ext_resource path="res://GFX/SPRITES/door_open.png" type="Texture" id=8]
-[ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=10]
-[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hazards/Conveyor_Doublewide.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/Torchy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hazards/Conveyor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Hazards/Spikes.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=14]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 3075.12, 1143.66 )
@@ -48,7 +51,7 @@ anchor_mode = 0
 current = true
 zoom = Vector2( 3.3, 3.3 )
 
-[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 11 )]
+[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 14 )]
 
 [node name="RoomBorder" type="Sprite" parent="RoomBase"]
 position = Vector2( 2560, 1440 )
@@ -84,43 +87,71 @@ shape = SubResource( 4 )
 tile_set = ExtResource( 3 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 262213, 4, 0, 458781, 4, 0, 458821, 5, 0, 655389, 5, 0, 655429, 5, 0, 851997, 6, 0, 852023, 4, 0, 852037, 5, 0, 917549, 2, 0, 917563, 2, 0, 917579, 3, 0, 1048597, 4, 0, 1048631, 5, 0, 1048645, 5, 0, 1245205, 6, 0, 1245239, 5, 0, 1245253, 5, 0, 1376269, 4, 0, 1441847, 5, 0, 1441861, 5, 0, 1507373, 2, 0, 1507387, 2, 0, 1507403, 3, 0, 1572877, 5, 0, 1638413, 5, 0, 1638455, 5, 0, 1638469, 5, 0, 1835021, 6, 0, 1835063, 5, 0, 1835077, 5, 0, 2031657, 4, 0, 2031661, 0, 0, 2031671, 6, 0, 2031675, 2, 0, 2031685, 6, 0, 2031691, 3, 0, 2228265, 5, 0, 2424873, 5, 0, 2621467, 4, 0, 2621471, 0, 0, 2621481, 6, 0, 2621496, 1, 0, 2621516, 1, 0, 2818075, 5, 0, 3014683, 5, 0, 3211281, 0, 0, 3211291, 6, 0 )
+tile_data = PoolIntArray( 786436, 0, 0, 852054, 2, 0, 1245270, 2, 0, 1704018, 4, 0, 1704022, 2, 0, 1835090, 5, 0, 2031698, 5, 0, 2228306, 5, 0, 2228310, 2, 0, 2424914, 5, 0, 2621522, 6, 0, 2818124, 0, 0, 2818125, 3, 0, 2949124, 1610612739, 0, 2949144, 1610612739, 0, 2949164, 1610612739, 0, 2949184, 1610612739, 0 )
 
 [node name="Structure" type="Node2D" parent="."]
 
+[node name="Conveyor" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 1574.38, 2460.29 )
+rotation = -0.651408
+reverse = true
+
+[node name="Conveyor2" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 3289.18, 2155.95 )
+rotation = -0.651408
+reverse = true
+
+[node name="Conveyor3" parent="Structure" instance=ExtResource( 9 )]
+position = Vector2( 4882.32, 1824.91 )
+rotation = -0.651408
+reverse = true
+
+[node name="Conveyor4" parent="Structure" instance=ExtResource( 12 )]
+position = Vector2( 1099.91, 3385.02 )
+reverse = true
+
+[node name="Conveyor5" parent="Structure" instance=ExtResource( 12 )]
+position = Vector2( 5783.57, 3391.37 )
+reverse = true
+
+[node name="Conveyor6" parent="Structure" instance=ExtResource( 12 )]
+position = Vector2( 2664.01, 3385.02 )
+reverse = true
+
+[node name="Conveyor7" parent="Structure" instance=ExtResource( 12 )]
+position = Vector2( 4221.27, 3385.02 )
+reverse = true
+
 [node name="Hazards" type="Node2D" parent="."]
 
-[node name="Gargoyle" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 1177.59, 1708.07 )
+[node name="Torchy" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 965.14, 1727.09 )
 
-[node name="Gargoyle2" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 1687.93, 1207.64 )
+[node name="Torchy2" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 2863.67, 1371.51 )
 
-[node name="Gargoyle3" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 2205.51, 686.224 )
+[node name="Torchy3" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 4781.25, 1098.48 )
 
-[node name="Gargoyle4" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 2971.54, 2374.52 )
+[node name="Gargoyle" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 309.45, 3141.59 )
 
-[node name="Gargoyle5" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 2074.48, 3064.96 )
+[node name="Spikes" parent="Hazards" instance=ExtResource( 13 )]
+position = Vector2( 5586.93, 1945.09 )
+rotation = 1.5708
 
-[node name="SpikeTrap" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 4240.75, 860.204 )
+[node name="Spikes2" parent="Hazards" instance=ExtResource( 13 )]
+position = Vector2( 6093.42, 2456.62 )
+rotation = -1.5708
 
-[node name="SpikeTrap2" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 3969.92, 860.204 )
-
-[node name="SpikeTrap3" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 4240.75, 1434.37 )
-
-[node name="SpikeTrap4" parent="Hazards" instance=ExtResource( 10 )]
-position = Vector2( 3969.92, 1434.37 )
+[node name="Spikes3" parent="Hazards" instance=ExtResource( 13 )]
+position = Vector2( 6093.42, 1456.11 )
+rotation = -1.5708
 
 [node name="Decoration" type="Node2D" parent="."]
 
 [node name="ExitDoor" type="Sprite" parent="."]
-position = Vector2( 6013.08, 3089.08 )
+position = Vector2( 6013.08, 568.287 )
 texture = ExtResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="ExitDoor"]
@@ -131,9 +162,9 @@ script = ExtResource( 6 )
 shape = SubResource( 5 )
 
 [node name="EntranceDoor" type="Sprite" parent="."]
-position = Vector2( 388.056, 3084.29 )
+position = Vector2( 388.056, 519.05 )
 texture = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 753.246, 3150.72 )
+position = Vector2( 753.246, 585.479 )
 [connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]

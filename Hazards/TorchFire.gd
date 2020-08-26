@@ -1,6 +1,6 @@
 extends Node2D
 
-export var speed = 500
+export var speed = 700
 export var steer_force = 50.0
 
 var velocity = Vector2.ZERO
