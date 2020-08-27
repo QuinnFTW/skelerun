@@ -29,7 +29,7 @@ b = Vector2( 2957.47, -1549.18 )
 a = Vector2( 2971.85, -1554.34 )
 b = Vector2( -2964.84, -1549.18 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "fire"
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -56,24 +56,24 @@ tracks/1/keys = {
 "args": [  ],
 "method": "fire"
 } ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "idle", "idle" ]
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ "idle", "idle" ]
-}
-
-[sub_resource type="Animation" id=8]
 resource_name = "fire"
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -102,7 +102,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -117,7 +117,7 @@ tracks/0/keys = {
 "values": [ "idle", "idle" ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 134.394, 256.651 )
 
 [node name="Level" type="Node2D"]
@@ -215,7 +215,7 @@ rotation = -1.5708
 position = Vector2( 715.152, 1891.46 )
 
 [node name="AnimatedSprite" parent="Hazards/Torchy" index="0"]
-frame = 0
+frame = 1
 
 [node name="DetectionRadius" parent="Hazards/Torchy" index="3"]
 scale = Vector2( 1.32, 1.32 )
@@ -224,11 +224,11 @@ scale = Vector2( 1.32, 1.32 )
 position = Vector2( 1123.37, 1332.06 )
 
 [node name="AnimatedSprite" parent="Hazards/Torchy2" index="0"]
-frame = 0
+frame = 1
 
 [node name="AnimationPlayer" parent="Hazards/Torchy2" index="1"]
-anims/fire = SubResource( 6 )
-anims/idle = SubResource( 7 )
+anims/fire = SubResource( 5 )
+anims/idle = SubResource( 6 )
 
 [node name="DetectionRadius" parent="Hazards/Torchy2" index="3"]
 scale = Vector2( 1.32, 1.32 )
@@ -237,11 +237,11 @@ scale = Vector2( 1.32, 1.32 )
 position = Vector2( 1501.34, 752.496 )
 
 [node name="AnimatedSprite" parent="Hazards/Torchy3" index="0"]
-frame = 0
+frame = 1
 
 [node name="AnimationPlayer" parent="Hazards/Torchy3" index="1"]
-anims/fire = SubResource( 8 )
-anims/idle = SubResource( 9 )
+anims/fire = SubResource( 7 )
+anims/idle = SubResource( 8 )
 
 [node name="DetectionRadius" parent="Hazards/Torchy3" index="3"]
 scale = Vector2( 1.32, 1.32 )
@@ -272,7 +272,7 @@ collision_layer = 64
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 9 )
 
 [node name="EntranceDoor" type="Sprite" parent="."]
 position = Vector2( 388.056, 3084.29 )

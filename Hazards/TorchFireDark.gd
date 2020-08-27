@@ -33,6 +33,7 @@ func init(_target, _transform):
 func manage_collision():
 	var collider = $Area2D.get_overlapping_bodies()
 	for object in collider:
+		$Dissapate.play()
 		is_hit = true
 		if object.name == "Player":
 			get_tree().call_group("Gamestate", "hurt")

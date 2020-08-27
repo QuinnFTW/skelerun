@@ -5,19 +5,30 @@ var is_slamming = false
 var start_position = Vector2(0,0)
 var slam_ready = true
 var is_resetting = false
+var direction
 
 
-const SLAM_SPEED = 10
+const SLAM_SPEED = 2
 const RESET_SPEED = 5
 
 func _ready():
-	start_position.y = position.y
+	start_position = position
 
 func _process(delta):
-	if $RayCast2D.is_colliding():
+	if $RayCast_Down.is_colliding():
+		direction = Vector2(0,1)
+		slam()
+	if $RayCast_Up.is_colliding():
+		direction = Vector2(0,-1)
+		slam()
+	if $RayCast_Left.is_colliding():
+		direction = Vector2(-1,0)
+		slam()
+	if $RayCast_Right.is_colliding():
+		direction = Vector2(1,0)
 		slam()
 	if is_slamming:
-		position.y += SLAM_SPEED
+		position  += direction * SLAM_SPEED
 		manage_collision()
 	if is_resetting:
 		reset_position()
@@ -42,10 +53,10 @@ func manage_collision():
 			is_resetting = true
 		
 func reset_position():
-	if position.y > start_position.y:
-		position.y -= RESET_SPEED
+	if position != start_position:
+		position -= direction * RESET_SPEED
 	else:
-		position.y = start_position.y
+		position = start_position
 		is_resetting = false
 		$Timer.start()
 
@@ -53,3 +64,4 @@ func reset_position():
 
 func _on_Hazard_body_exited(body):
 	pass # Replace with function body.
+

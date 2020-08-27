@@ -1,0 +1,270 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
+[ext_resource path="res://Structure/Tileset_Dungeon.tres" type="TileSet" id=3]
+[ext_resource path="res://GFX/SPRITES/Room_Border_Large.png" type="Texture" id=4]
+[ext_resource path="res://GFX/SPRITES/backdrop_Large.png" type="Texture" id=5]
+[ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=6]
+[ext_resource path="res://GFX/SPRITES/door_gateClosed.png" type="Texture" id=7]
+[ext_resource path="res://GFX/SPRITES/door_open.png" type="Texture" id=8]
+[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hazards/Spout.tscn" type="PackedScene" id=11]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 3075.12, 1143.66 )
+b = Vector2( -3150.68, 1140.95 )
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -2958.57, 2317.04 )
+b = Vector2( -2963.73, -826.825 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 2957.47, 1558.55 )
+b = Vector2( 2957.47, -1549.18 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 2971.85, -1554.34 )
+b = Vector2( -2964.84, -1549.18 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 134.394, 256.651 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RoomBase" type="Node2D" parent="."]
+position = Vector2( 634.967, 356.201 )
+
+[node name="Backdrop" type="Sprite" parent="RoomBase"]
+position = Vector2( 2551.4, 1433.98 )
+z_index = -5
+texture = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="RoomBase"]
+position = Vector2( -645.294, -362.589 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 3.3, 3.3 )
+
+[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 9 )]
+
+[node name="RoomBorder" type="Sprite" parent="RoomBase"]
+position = Vector2( 2560, 1440 )
+texture = ExtResource( 4 )
+
+[node name="Floor" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Floor"]
+position = Vector2( -18, 410.202 )
+shape = SubResource( 1 )
+
+[node name="LeftWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+position = Vector2( 0, -743 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/LeftWall"]
+shape = SubResource( 2 )
+
+[node name="RightWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/RightWall"]
+shape = SubResource( 3 )
+
+[node name="Ceiling" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Ceiling"]
+shape = SubResource( 4 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 1114134, 4, 0, 1114158, 4, 0, 1114182, 4, 0, 1310724, 0, 0, 1310742, 5, 0, 1310766, 5, 0, 1310790, 5, 0, 1310802, 4, 0, 1310806, 2, 0, 1507338, 5, 0, 1507350, 5, 0, 1507362, 4, 0, 1507374, 5, 0, 1507386, 4, 0, 1507398, 5, 0, 1507410, 5, 0, 1703946, 5, 0, 1703958, 5, 0, 1703970, 5, 0, 1703982, 5, 0, 1703994, 5, 0, 1704006, 5, 0, 1704018, 5, 0, 1835094, 2, 0, 1900554, 5, 0, 1900566, 5, 0, 1900578, 5, 0, 1900590, 5, 0, 1900602, 5, 0, 1900614, 5, 0, 1900626, 5, 0, 2097162, 5, 0, 2097174, 5, 0, 2097186, 5, 0, 2097198, 5, 0, 2097210, 5, 0, 2097222, 5, 0, 2097234, 5, 0, 2293770, 5, 0, 2293782, 5, 0, 2293794, 5, 0, 2293806, 5, 0, 2293818, 5, 0, 2293830, 5, 0, 2293842, 5, 0, 2359382, 2, 0, 2490378, 5, 0, 2490390, 5, 0, 2490402, 5, 0, 2490414, 5, 0, 2490426, 5, 0, 2490438, 5, 0, 2490450, 5, 0, 2686986, 6, 0, 2686998, 6, 0, 2687010, 6, 0, 2687022, 6, 0, 2687034, 6, 0, 2687046, 6, 0, 2687058, 6, 0, 2883670, 2, 0 )
+
+[node name="Structure" type="Node2D" parent="."]
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="Gargoyle" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 311.127, 3133.9 )
+fire_delay = 1.0
+
+[node name="Spout" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 1504.72, 296.985 )
+fire_delay = 2.0
+
+[node name="Sprite" parent="Hazards/Spout" index="1"]
+flip_v = true
+
+[node name="Spout2" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 2288.2, 296.985 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout2" index="0"]
+anims/fire = SubResource( 6 )
+
+[node name="Sprite" parent="Hazards/Spout2" index="1"]
+flip_v = true
+
+[node name="Spout3" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 3063.19, 296.985 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout3" index="0"]
+anims/fire = SubResource( 7 )
+
+[node name="Sprite" parent="Hazards/Spout3" index="1"]
+flip_v = true
+
+[node name="Spout4" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 3846.66, 296.985 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout4" index="0"]
+anims/fire = SubResource( 8 )
+
+[node name="Sprite" parent="Hazards/Spout4" index="1"]
+flip_v = true
+
+[node name="Spout5" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 4588.81, 296.985 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout5" index="0"]
+anims/fire = SubResource( 9 )
+
+[node name="Sprite" parent="Hazards/Spout5" index="1"]
+flip_v = true
+
+[node name="Spout6" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 5372.29, 296.985 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout6" index="0"]
+anims/fire = SubResource( 10 )
+
+[node name="Sprite" parent="Hazards/Spout6" index="1"]
+flip_v = true
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="ExitDoor" type="Sprite" parent="."]
+position = Vector2( 6013.08, 1013.01 )
+texture = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="ExitDoor"]
+collision_layer = 64
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
+shape = SubResource( 5 )
+
+[node name="EntranceDoor" type="Sprite" parent="."]
+position = Vector2( 388.056, 1013.88 )
+texture = ExtResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 753.246, 1080.31 )
+[connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]
+
+[editable path="Hazards/Spout"]
+
+[editable path="Hazards/Spout2"]
+
+[editable path="Hazards/Spout3"]
+
+[editable path="Hazards/Spout4"]
+
+[editable path="Hazards/Spout5"]
+
+[editable path="Hazards/Spout6"]

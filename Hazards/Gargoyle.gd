@@ -3,8 +3,10 @@ extends Node2D
 var time_out = false
 
 var is_flipped
+export var fire_delay = 1.5
 
 func _ready():
+	$AnimatedSprite/Timer.wait_time = fire_delay
 	if $AnimatedSprite.flip_h:
 		is_flipped = true
 	elif not $AnimatedSprite.flip_h:

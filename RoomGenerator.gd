@@ -9,7 +9,10 @@ var levels = ["res://Levels/RoomArray/l_000.tscn","res://Levels/RoomArray/l_001.
 "res://Levels/RoomArray/l_008.tscn","res://Levels/RoomArray/l_009.tscn",
 "res://Levels/RoomArray/l_010.tscn","res://Levels/RoomArray/l_011.tscn",
 "res://Levels/RoomArray/l_012.tscn", "res://Levels/RoomArray/l_013.tscn",
-"res://Levels/RoomArray/l_014.tscn","res://Levels/RoomArray/l_015.tscn"]
+"res://Levels/RoomArray/l_014.tscn","res://Levels/RoomArray/l_015.tscn",
+"res://Levels/RoomArray/l_016.tscn","res://Levels/RoomArray/l_017.tscn",
+"res://Levels/RoomArray/l_018.tscn","res://Levels/RoomArray/l_019.tscn",
+"res://Levels/RoomArray/l_020.tscn"]
 var active_level
 var index = -1
 

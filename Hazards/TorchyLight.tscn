@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://GFX/SPRITES/torchy_light_fire_1.png" type="Texture" id=1]
+[ext_resource path="res://GFX/SPRITES/torchy_light_idle_1.png" type="Texture" id=2]
+[ext_resource path="res://GFX/SPRITES/torchy_light_idle_2.png" type="Texture" id=3]
+[ext_resource path="res://GFX/SPRITES/torchy_light_idle_3.png" type="Texture" id=4]
+[ext_resource path="res://GFX/SPRITES/torchy_light_fire_2.png" type="Texture" id=5]
+[ext_resource path="res://GFX/SPRITES/torchy_light_fireready.png" type="Texture" id=6]
+[ext_resource path="res://Hazards/TorchyLight.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "ready",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "fire",
+"speed": 8.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "ready", "fire" ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "idle", "idle" ]
+}
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 1094.37
+
+[node name="TorchyLight" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+frame = 1
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fire = SubResource( 2 )
+anims/idle = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="DetectionRadius" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
+shape = SubResource( 4 )
+
+[node name="Delay" type="Timer" parent="."]
+wait_time = 0.2
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="DetectionRadius" to="." method="_on_DetectionRadius_body_entered"]
+[connection signal="body_exited" from="DetectionRadius" to="." method="_on_DetectionRadius_body_exited"]
+[connection signal="timeout" from="Delay" to="." method="_on_Delay_timeout"]

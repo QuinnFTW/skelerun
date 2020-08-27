@@ -32,12 +32,12 @@ b = Vector2( 2957.47, -1549.18 )
 a = Vector2( 2971.85, -1554.34 )
 b = Vector2( -2964.84, -1549.18 )
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=5]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 350, 190, 0, 0, 0, 0, 350.83, 2491.2, 0, 0, 0, 0, 346.592, 2486.96, 0, 0, 0, 0, 352, 191, 0, 0, 0, 0, 352, 191 )
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "fire"
 length = 0.5
 tracks/0/type = "value"
@@ -65,7 +65,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -15 ), Vector2( 0, 0 ), Vector2( 0, 15 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 134.394, 256.651 )
 
 [node name="Level" type="Node2D"]
@@ -140,17 +140,17 @@ rotation = 3.14159
 [node name="Sawblade" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 2821.12, 1889.89 )
 rotation = 1.5708
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Sawblade2" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 6219.87, 1889.89 )
 rotation = 1.5708
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Sawblade3" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 3329.66, 1889.89 )
 rotation = -1.5708
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Thwomp" parent="Hazards" instance=ExtResource( 11 )]
 position = Vector2( 545.384, 557.37 )
@@ -189,7 +189,7 @@ position = Vector2( 6088.93, 1199.25 )
 flip_h = true
 
 [node name="AnimationPlayer" parent="Hazards/Gargoyle2" index="1"]
-anims/fire = SubResource( 7 )
+anims/fire = SubResource( 6 )
 
 [node name="Decoration" type="Node2D" parent="."]
 
@@ -202,7 +202,7 @@ collision_layer = 64
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="EntranceDoor" type="Sprite" parent="."]
 position = Vector2( 388.056, 3084.29 )

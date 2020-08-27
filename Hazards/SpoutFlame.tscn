@@ -5,7 +5,7 @@
 [ext_resource path="res://GFX/SPRITES/gargoyle_flame_3.png" type="Texture" id=3]
 [ext_resource path="res://GFX/SPRITES/gargoyle_flame_impact_2.png" type="Texture" id=4]
 [ext_resource path="res://GFX/SPRITES/gargoyle_flame_impact_1.png" type="Texture" id=5]
-[ext_resource path="res://Hazards/GargoyleFlame.gd" type="Script" id=6]
+[ext_resource path="res://Hazards/SpoutFlame.gd" type="Script" id=6]
 [ext_resource path="res://SFX/fire_puff.wav" type="AudioStream" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -24,7 +24,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 42.9457
 
-[node name="GargoyleFlame" type="Node2D"]
+[node name="SpoutFlame" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -32,6 +32,7 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
+rotation = -1.5708
 frames = SubResource( 1 )
 animation = "firing"
 playing = true

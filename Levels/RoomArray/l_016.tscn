@@ -1,0 +1,378 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
+[ext_resource path="res://Structure/Tileset_Dungeon.tres" type="TileSet" id=3]
+[ext_resource path="res://GFX/SPRITES/Room_Border_Large.png" type="Texture" id=4]
+[ext_resource path="res://GFX/SPRITES/backdrop_Large.png" type="Texture" id=5]
+[ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=6]
+[ext_resource path="res://GFX/SPRITES/door_gateClosed.png" type="Texture" id=7]
+[ext_resource path="res://GFX/SPRITES/door_open.png" type="Texture" id=8]
+[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/Thwomp_Mini.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hazards/Spout.tscn" type="PackedScene" id=11]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 3075.12, 1143.66 )
+b = Vector2( -3150.68, 1140.95 )
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -2958.57, 2317.04 )
+b = Vector2( -2963.73, -826.825 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 2957.47, 1558.55 )
+b = Vector2( 2957.47, -1549.18 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 2971.85, -1554.34 )
+b = Vector2( -2964.84, -1549.18 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 134.394, 256.651 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RoomBase" type="Node2D" parent="."]
+position = Vector2( 634.967, 356.201 )
+
+[node name="Backdrop" type="Sprite" parent="RoomBase"]
+position = Vector2( 2551.4, 1433.98 )
+z_index = -5
+texture = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="RoomBase"]
+position = Vector2( -645.294, -362.589 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 3.3, 3.3 )
+
+[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 9 )]
+
+[node name="RoomBorder" type="Sprite" parent="RoomBase"]
+position = Vector2( 2560, 1440 )
+texture = ExtResource( 4 )
+
+[node name="Floor" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Floor"]
+position = Vector2( -18, 410.202 )
+shape = SubResource( 1 )
+one_way_collision_margin = 5.0
+
+[node name="LeftWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+position = Vector2( 0, -743 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/LeftWall"]
+shape = SubResource( 2 )
+one_way_collision_margin = 5.0
+
+[node name="RightWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/RightWall"]
+shape = SubResource( 3 )
+one_way_collision_margin = 5.0
+
+[node name="Ceiling" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Ceiling"]
+shape = SubResource( 4 )
+one_way_collision_margin = 5.0
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 1048581, 0, 0, 1048609, 0, 0, 1048619, 4, 0, 1048623, 0, 0, 1245227, 5, 0, 1245241, 0, 0, 1441835, 5, 0, 1441859, 0, 0, 1572883, 0, 0, 1638443, 5, 0, 1638477, 0, 0, 1835051, 5, 0, 2031659, 5, 0, 2228267, 5, 0, 2228310, 0, 0, 2293765, 0, 0, 2293793, 0, 0, 2424875, 5, 0, 2424908, 0, 0, 2621483, 5, 0, 2621506, 0, 0, 2818091, 5, 0, 2818104, 0, 0, 2949139, 0, 0, 3014699, 5, 0, 3211307, 6, 0 )
+
+[node name="Structure" type="Node2D" parent="."]
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="Thwomp" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 1539.49, 2021.81 )
+
+[node name="Thwomp2" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 1539.49, 579.315 )
+
+[node name="Thwomp3" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 3307.49, 423.491 )
+
+[node name="Thwomp4" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 3966.75, 423.491 )
+
+[node name="Thwomp5" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 4620.01, 423.491 )
+
+[node name="Thwomp6" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 5279.26, 423.491 )
+
+[node name="Thwomp7" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 3236.51, 2018.96 )
+
+[node name="Spout" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 2433.59, 1268.92 )
+fire_delay = 1.0
+
+[node name="Sprite" parent="Hazards/Spout" index="1"]
+flip_v = true
+
+[node name="Spout2" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 641.099, 1268.92 )
+fire_delay = 1.0
+
+[node name="AnimationPlayer" parent="Hazards/Spout2" index="0"]
+anims/fire = SubResource( 6 )
+
+[node name="Sprite" parent="Hazards/Spout2" index="1"]
+flip_v = true
+
+[node name="Spout3" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 3655.69, 3006.96 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout3" index="0"]
+anims/fire = SubResource( 7 )
+
+[node name="Sprite" parent="Hazards/Spout3" index="1"]
+flip_v = true
+
+[node name="Spout5" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 4294.77, 2805.14 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout5" index="0"]
+anims/fire = SubResource( 9 )
+
+[node name="Sprite" parent="Hazards/Spout5" index="1"]
+flip_v = true
+
+[node name="Spout7" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 4940.58, 2623.51 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout7" index="0"]
+anims/fire = SubResource( 11 )
+
+[node name="Sprite" parent="Hazards/Spout7" index="1"]
+flip_v = true
+
+[node name="Spout4" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 3719.19, 1476.7 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout4" index="0"]
+anims/fire = SubResource( 14 )
+
+[node name="Sprite" parent="Hazards/Spout4" index="1"]
+flip_v = true
+
+[node name="Spout6" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 4358.27, 1662.21 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout6" index="0"]
+anims/fire = SubResource( 15 )
+
+[node name="Sprite" parent="Hazards/Spout6" index="1"]
+flip_v = true
+
+[node name="Spout9" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 5004.08, 1855.2 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout9" index="0"]
+anims/fire = SubResource( 13 )
+
+[node name="Sprite" parent="Hazards/Spout9" index="1"]
+flip_v = true
+
+[node name="Spout8" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 5579.66, 2428.42 )
+fire_delay = 1.5
+
+[node name="AnimationPlayer" parent="Hazards/Spout8" index="0"]
+anims/fire = SubResource( 12 )
+
+[node name="Sprite" parent="Hazards/Spout8" index="1"]
+flip_v = true
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="ExitDoor" type="Sprite" parent="."]
+position = Vector2( 6013.08, 3089.08 )
+texture = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="ExitDoor"]
+collision_layer = 64
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
+shape = SubResource( 5 )
+
+[node name="EntranceDoor" type="Sprite" parent="."]
+position = Vector2( 388.056, 3084.29 )
+texture = ExtResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 673.882, 3156.16 )
+[connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]
+
+[editable path="Hazards/Spout"]
+
+[editable path="Hazards/Spout2"]
+
+[editable path="Hazards/Spout3"]
+
+[editable path="Hazards/Spout5"]
+
+[editable path="Hazards/Spout7"]
+
+[editable path="Hazards/Spout4"]
+
+[editable path="Hazards/Spout6"]
+
+[editable path="Hazards/Spout9"]
+
+[editable path="Hazards/Spout8"]

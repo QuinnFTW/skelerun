@@ -1,33 +1,33 @@
 extends Node2D
 
-export var speed = 700
-export var steer_force = 50.0
+export var speed = 1200
+export var impulse = 1000
+export var steer_force = 10.0
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
 var target = null
 var is_hit = false
 
-func start(_transform, _target):
+func start(_transform, _target, _delta):
 	global_transform = _transform
 	rotation += rand_range(-0.09, 0.09)
-	velocity = transform.x * speed
+	velocity = transform.x * speed 
 	init(_target, _transform)
-#	target = get_parent().player
 
 func seek():
 	var steer = Vector2.ZERO
 	if target:
-		var desired = (target.position - position).normalized() * speed
+		var desired = (target.position - position).normalized() * speed 
 		steer = (desired - velocity).normalized() * steer_force
-	return steer
+	return steer 
 
 func _physics_process(delta):
-	acceleration += seek()
-	velocity += acceleration * delta
+	acceleration += seek() * 15
+	velocity += acceleration * delta 
 	velocity = velocity.clamped(speed)
 	rotation = velocity.angle()
-	position += velocity * delta
+	position += velocity * delta 
 	
 func init(_target, _transform):
 	target = _target
@@ -51,3 +51,4 @@ func manage_collision():
 
 func explode():
 	queue_free()
+
