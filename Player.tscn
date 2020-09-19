@@ -43,12 +43,15 @@ func _physics_process(_delta):
 	animate()
 	push(push_dir)
 	
-func _process(delta):
-	if time_out and hurt:
-		yield(get_tree(), \"idle_frame\") 
-		self.modulate.a = 0.5
-		yield(get_tree(), \"idle_frame\") 
-		self.modulate.a = 1.0
+#func _process(delta):
+#	if get_owner() != null:
+#
+#		if time_out and hurt:
+#			yield(get_tree(), \"idle_frame\") 
+#			self.modulate.a = 0.5
+#			yield(get_tree(), \"idle_frame\") 
+#			self.modulate.a = 1.0
+	
 	if not time_out and stun_time_out:
 		invincible = true
 	else:
@@ -162,7 +165,6 @@ __meta__ = {
 polygon = PoolVector2Array( -36.4359, 188.185, 30.8668, 188.185, 87.0405, 63.6913, 90.7863, -123.597, 1.63696, -184.279, -102.495, -123.597, -105.492, 54.7014 )
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
-animation = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2( 3, 3 )

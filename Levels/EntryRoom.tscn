@@ -1,0 +1,397 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
+[ext_resource path="res://Structure/Tileset_Dungeon.tres" type="TileSet" id=3]
+[ext_resource path="res://GFX/SPRITES/Room_Border_Large.png" type="Texture" id=4]
+[ext_resource path="res://GFX/SPRITES/backdrop_Large.png" type="Texture" id=5]
+[ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=6]
+[ext_resource path="res://GFX/SPRITES/IntroCutscene/arch_back.png" type="Texture" id=7]
+[ext_resource path="res://GFX/SPRITES/door_open.png" type="Texture" id=8]
+[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://GFX/SPRITES/IntroCutscene/gate.png" type="Texture" id=10]
+[ext_resource path="res://GFX/SPRITES/IntroCutscene/arch_front.png" type="Texture" id=11]
+[ext_resource path="res://GFX/SPRITES/lever_left.png" type="Texture" id=12]
+[ext_resource path="res://GFX/SPRITES/lever_right.png" type="Texture" id=13]
+[ext_resource path="res://GFX/SPRITES/IntroCutscene/darkness_bg.png" type="Texture" id=14]
+[ext_resource path="res://GFX/SPRITES/IntroCutscene/darkness_gate.png" type="Texture" id=15]
+[ext_resource path="res://GFX/SPRITES/exit.png" type="Texture" id=16]
+[ext_resource path="res://Fonts/PixelSplitter.tres" type="DynamicFont" id=17]
+[ext_resource path="res://GFX/SPRITES/ButtonPrompts/WASD.png" type="Texture" id=18]
+[ext_resource path="res://GFX/SPRITES/ButtonPrompts/Spacebar.png" type="Texture" id=19]
+[ext_resource path="res://GFX/SPRITES/ButtonPrompts/Drop.png" type="Texture" id=20]
+[ext_resource path="res://Levels/Lever.gd" type="Script" id=21]
+[ext_resource path="res://GFX/SPRITES/ButtonPrompts/f_Key.png" type="Texture" id=22]
+[ext_resource path="res://Levels/ArchwayExit.gd" type="Script" id=23]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 3075.12, 1143.66 )
+b = Vector2( -3150.68, 1140.95 )
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -2958.57, 2317.04 )
+b = Vector2( -2963.73, -826.825 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 2957.47, 1558.55 )
+b = Vector2( 2957.47, -1549.18 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 2971.85, -1554.34 )
+b = Vector2( -2964.84, -1549.18 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 134.394, 256.651 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 160.285, 1551.3 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "switch",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 256.015, 206.123 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "button_float"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("f_Key:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 41.3005, -510.184 ), Vector2( 41.301, -600 ), Vector2( 41.3005, -510.184 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "open_gate"
+
+[sub_resource type="Animation" id=11]
+resource_name = "open_gate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Gate:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3197.85, 1789.64 ), Vector2( 3197.85, 870.026 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "disable_lever"
+}, {
+"args": [  ],
+"method": "unfreeze_player"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../RoomBase/Camera2D/SceenShake")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null, null, null ],
+"method": "gate_shake"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 559.896, 865.865 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "load_next"
+} ]
+}
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RoomBase" type="Node2D" parent="."]
+position = Vector2( 634.967, 356.201 )
+
+[node name="Backdrop" type="Sprite" parent="RoomBase"]
+position = Vector2( 2551.4, 1433.98 )
+z_index = -5
+texture = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="RoomBase"]
+position = Vector2( -645.294, -362.589 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 3.3, 3.3 )
+
+[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 9 )]
+
+[node name="RoomBorder" type="Sprite" parent="RoomBase"]
+position = Vector2( 2560, 1440 )
+texture = ExtResource( 4 )
+
+[node name="Floor" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Floor"]
+position = Vector2( -18, 410.202 )
+shape = SubResource( 1 )
+
+[node name="LeftWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+position = Vector2( 0, -743 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/LeftWall"]
+shape = SubResource( 2 )
+
+[node name="RightWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/RightWall"]
+shape = SubResource( 3 )
+
+[node name="Ceiling" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Ceiling"]
+shape = SubResource( 4 )
+
+[node name="Structure" type="Node2D" parent="."]
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="ExitDoor" type="Sprite" parent="."]
+position = Vector2( 6013.08, 3089.08 )
+texture = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="ExitDoor"]
+collision_layer = 64
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
+shape = SubResource( 5 )
+
+[node name="DarknessGate" type="Sprite" parent="."]
+position = Vector2( 3197.85, 1789.64 )
+texture = ExtResource( 15 )
+
+[node name="Gate" type="Sprite" parent="."]
+position = Vector2( 3197.85, 1789.64 )
+texture = ExtResource( 10 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Gate"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/StaticBody2D"]
+position = Vector2( 1228.98, 16.9514 )
+shape = SubResource( 7 )
+
+[node name="ArchBack" type="Sprite" parent="."]
+position = Vector2( 3197.85, 1789.64 )
+texture = ExtResource( 7 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 327711, 4, 0, 524319, 5, 0, 720927, 5, 0, 917535, 5, 0, 1114143, 5, 0, 1310751, 5, 0, 1507359, 5, 0, 1703967, 5, 0, 1900575, 5, 0, 2097183, 5, 0, 2293791, 5, 0, 2490399, 5, 0, 2687007, 6, 0, 2818065, 4, 0, 2818069, 2, 0, 3014673, 5, 0, 3211281, 6, 0 )
+
+[node name="Lever" type="AnimatedSprite" parent="."]
+position = Vector2( 3032.62, 3146.65 )
+frames = SubResource( 6 )
+animation = "idle"
+playing = true
+script = ExtResource( 21 )
+
+[node name="f_Key" type="Sprite" parent="Lever"]
+position = Vector2( 41.3005, -510.184 )
+texture = ExtResource( 22 )
+
+[node name="Area2D" type="Area2D" parent="Lever"]
+collision_layer = 66
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lever/Area2D"]
+shape = SubResource( 8 )
+
+[node name="fKeyAnimatior" type="AnimationPlayer" parent="Lever"]
+anims/button_float = SubResource( 9 )
+anims/open_gate = SubResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lever"]
+anims/open_gate = SubResource( 11 )
+
+[node name="ButtonPrompts" type="Node2D" parent="."]
+
+[node name="Drop" type="Sprite" parent="ButtonPrompts"]
+position = Vector2( 1032.96, 1905.71 )
+texture = ExtResource( 20 )
+
+[node name="Spacebar" type="Sprite" parent="ButtonPrompts"]
+position = Vector2( 1048.98, 1302.36 )
+texture = ExtResource( 19 )
+
+[node name="WASD" type="Sprite" parent="ButtonPrompts"]
+position = Vector2( 1048.98, 592.223 )
+texture = ExtResource( 18 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ButtonPrompts"]
+anchor_right = 0.312
+anchor_bottom = 0.667
+margin_left = 800.0
+margin_top = 861.767
+margin_right = 905.442
+margin_bottom = 901.767
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 6.53979, 6.6 )
+custom_fonts/mono_font = ExtResource( 17 )
+custom_fonts/normal_font = ExtResource( 17 )
+tab_size = 8
+text = "To Move"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ButtonPrompts"]
+anchor_right = 0.312
+anchor_bottom = 0.667
+margin_left = 784.0
+margin_top = 1485.77
+margin_right = 889.442
+margin_bottom = 1525.77
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 6.53979, 6.6 )
+custom_fonts/mono_font = ExtResource( 17 )
+custom_fonts/normal_font = ExtResource( 17 )
+tab_size = 8
+text = "To Jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="ButtonPrompts"]
+anchor_right = 0.304
+anchor_bottom = 0.667
+margin_left = 643.346
+margin_top = 2077.36
+margin_right = 796.788
+margin_bottom = 2144.01
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 6.53979, 6.6 )
+custom_fonts/mono_font = ExtResource( 17 )
+custom_fonts/normal_font = ExtResource( 17 )
+tab_size = 8
+text = "     To Drop 
+    through 
+  Platforms"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 852.472, 3154.08 )
+
+[node name="exit" type="Sprite" parent="."]
+position = Vector2( 536.158, 3462.08 )
+texture = ExtResource( 16 )
+
+[node name="DarknessRoom" type="Sprite" parent="."]
+position = Vector2( 3197.85, 1789.64 )
+texture = ExtResource( 14 )
+
+[node name="ArchwayExit" type="Area2D" parent="."]
+position = Vector2( 3048.64, 3061.22 )
+collision_layer = 66
+script = ExtResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArchwayExit"]
+position = Vector2( 2739.09, -592.669 )
+shape = SubResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ArchwayExit"]
+autoplay = "fade_in"
+anims/fade_in = SubResource( 14 )
+anims/fade_out = SubResource( 13 )
+
+[node name="ArchFront" type="Sprite" parent="."]
+position = Vector2( 3197.85, 1789.64 )
+texture = ExtResource( 11 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+[connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Lever/Area2D" to="Lever" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Lever/Area2D" to="Lever" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="ArchwayExit" to="ArchwayExit" method="_on_ArchwayExit_body_entered"]

@@ -1,18 +1,28 @@
 extends Node2D
 
-var levels_to_generate
-var levels_generated 
+var levels_to_generate = 1
+var levels_generated = 0
 var levels = ["res://Levels/RoomArray/l_000.tscn","res://Levels/RoomArray/l_001.tscn",
 "res://Levels/RoomArray/l_002.tscn","res://Levels/RoomArray/l_003.tscn",
 "res://Levels/RoomArray/l_004.tscn","res://Levels/RoomArray/l_005.tscn",
 "res://Levels/RoomArray/l_006.tscn","res://Levels/RoomArray/l_007.tscn",
 "res://Levels/RoomArray/l_008.tscn","res://Levels/RoomArray/l_009.tscn",
 "res://Levels/RoomArray/l_010.tscn","res://Levels/RoomArray/l_011.tscn",
-"res://Levels/RoomArray/l_012.tscn", "res://Levels/RoomArray/l_013.tscn",
+"res://Levels/RoomArray/l_012.tscn","res://Levels/RoomArray/l_013.tscn",
 "res://Levels/RoomArray/l_014.tscn","res://Levels/RoomArray/l_015.tscn",
 "res://Levels/RoomArray/l_016.tscn","res://Levels/RoomArray/l_017.tscn",
 "res://Levels/RoomArray/l_018.tscn","res://Levels/RoomArray/l_019.tscn",
-"res://Levels/RoomArray/l_020.tscn"]
+"res://Levels/RoomArray/l_020.tscn","res://Levels/RoomArray/l_021.tscn",
+"res://Levels/RoomArray/l_022.tscn","res://Levels/RoomArray/l_023.tscn",
+"res://Levels/RoomArray/l_024.tscn","res://Levels/RoomArray/l_025.tscn",
+"res://Levels/RoomArray/l_026.tscn","res://Levels/RoomArray/l_027.tscn",
+"res://Levels/RoomArray/l_028.tscn","res://Levels/RoomArray/l_029.tscn"]
+
+var end_counter = 0
+var exit_scene = "res://Levels/ExitRoom.tscn"
+var dock_scene = "res://Levels/EndCinematic.tscn"
+var waterfall_scene = "res://Levels/EndCinematicFall.tscn"
+
 var active_level
 var index = -1
 
@@ -26,10 +36,23 @@ func _ready():
 	pass
 	
 func generate():
-#	levels_generated += 1
+	levels_generated += 1
 #	Check if levels_generated == levels_to_generate. If so, load the exit room.
+	if (levels_generated >= levels_to_generate):
+		$VolumeTween.play("fade_music")
+		unload_level()
+		var t = Timer.new()
+		t.set_wait_time(1)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		yield(t, "timeout")
+		t.queue_free()
+		get_tree().change_scene("res://Levels/ExitRoom.tscn")
+		
 #	else unload the current active room and load a new one at random, setting it as active
-	scene_transition()
+	else:
+		scene_transition()
 	
 #	load_level()
 	
@@ -41,8 +64,30 @@ func load_level():
 	add_child(active_level)
 	freeze_player()
 	
-func scene_transition():
+func scene_transition(): #The animation also calls the load_level function
 	get_tree().call_group("Animator", "fade_out_in")
+	
+func load_end_scenes():
+	get_tree().call_group("Animator", "fade_cut")
+	unload_level()
+	var scene = load(exit_scene)
+	active_level = scene.instance()
+	add_child(active_level)
+	get_tree().call_group("DeathWall", "stop_motion")
+
+func end_cinematic():
+	get_tree().call_group("Animator", "fade_cut")
+	unload_level()
+	var scene = load(dock_scene)
+	active_level = scene.instance()
+	add_child(active_level)
+	
+func end_fall():
+	get_tree().call_group("Animator", "fade_cut")
+	unload_level()
+	var scene = load(waterfall_scene)
+	active_level = scene.instance()
+	add_child(active_level)
 	
 func unload_level():
 	remove_child(active_level)

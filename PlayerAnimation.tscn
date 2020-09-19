@@ -33,18 +33,18 @@ animations = [ {
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 13 ) ],
-"loop": false,
-"name": "recover",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 13 ) ],
 "loop": false,
 "name": "fall",
 "speed": 12.5
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "recover",
+"speed": 7.0
 } ]
 
 [node name="PlayerAnimation" type="AnimatedSprite"]
 frames = SubResource( 1 )
-animation = "recover"
+animation = "idle"
 script = ExtResource( 6 )

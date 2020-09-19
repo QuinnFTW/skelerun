@@ -1,12 +1,98 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=1]
 [ext_resource path="res://Hazards/DeathWall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Animator.gd" type="Script" id=3]
+[ext_resource path="res://SFX/DontGiveUpSkeleton(looping).wav" type="AudioStream" id=4]
 [ext_resource path="res://RoomGenerator.gd" type="Script" id=5]
 
+[sub_resource type="Animation" id=5]
+resource_name = "fade_music"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -50.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -50.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../CanvasModulate:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
 [sub_resource type="Animation" id=1]
-resource_name = "fade_out_in"
+resource_name = "end_cinematic"
+tracks/0/type = "method"
+tracks/0/path = NodePath("RoomGenerator")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_cinematic"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_cut"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasModulate:color")
@@ -44,8 +130,15 @@ tracks/1/keys = {
 [node name="GameManager" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="RoomGenerator" type="Node2D" parent="."]
+[node name="RoomGenerator" type="Node2D" parent="." groups=[
+"Gamestate",
+]]
 script = ExtResource( 5 )
+
+[node name="VolumeTween" type="AnimationPlayer" parent="RoomGenerator" groups=[
+"Animator",
+]]
+anims/fade_music = SubResource( 5 )
 
 [node name="DeathWall" parent="." instance=ExtResource( 2 )]
 
@@ -56,5 +149,12 @@ script = ExtResource( 5 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=[
 "Animator",
 ]]
-anims/fade_out_in = SubResource( 1 )
+anims/end_cinematic = SubResource( 1 )
+anims/fade_cut = SubResource( 2 )
+anims/fade_out = SubResource( 4 )
+anims/fade_out_in = SubResource( 3 )
 script = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true

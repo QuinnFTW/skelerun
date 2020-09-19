@@ -29,6 +29,16 @@ func thwomp_shake(duration = 0.2, frequency = 15, amplitude = 16):
 	$Frequency.start()
 	
 	new_shake()
+	
+func gate_shake(duration = 3, frequency = 15, amplitude = 16):
+	self.amplitude = amplitude
+	
+	$Duration.wait_time = duration
+	$Frequency.wait_time = 1/float(frequency)
+	$Duration.start()
+	$Frequency.start()
+	
+	new_shake()
 
 func new_shake():
 	var rand = Vector2()

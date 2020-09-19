@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://PlayerAnimation.tscn" type="PackedScene" id=1]
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
+position = Vector2( 508.096, 389.244 )
+collision_mask = 78
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -36.4359, 188.185, 30.8668, 188.185, 87.0405, 63.6913, 90.7863, -123.597, 1.63696, -184.279, -102.495, -123.597, -105.492, 54.7014 )
+
+[node name="PlayerAnimation" parent="." instance=ExtResource( 1 )]
+animation = "idle"
+script = null
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2( 3, 3 )
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true

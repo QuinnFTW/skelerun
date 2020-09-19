@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/DontGiveUpSkeleton(looping).wav-55eda89072539f97799748baa9356f9e.sample"
+
+[deps]
+
+source_file="res://SFX/DontGiveUpSkeleton(looping).wav"
+dest_files=[ "res://.import/DontGiveUpSkeleton(looping).wav-55eda89072539f97799748baa9356f9e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=true
+compress/mode=0

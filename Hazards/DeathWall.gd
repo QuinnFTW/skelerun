@@ -2,6 +2,7 @@ extends AnimatedSprite
 
 var motion = Vector2(0,0)
 var start_position = position
+var in_motion = true
 
 const SPEED = .5
 
@@ -10,11 +11,15 @@ func _ready():
 	
 
 func _process(delta):
-	position.x += SPEED
+	if (in_motion):
+		position.x += SPEED
 	
 	
 func reset_position():
 	position = start_position
+	
+func stop_motion():
+	in_motion = false
 	
 	
 

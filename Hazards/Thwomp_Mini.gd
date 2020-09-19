@@ -8,9 +8,12 @@ var is_resetting = false
 var is_selected = false
 var direction
 
+export var SLAM_SPEED = 10
+export var RESET_SPEED = 10
 
-const SLAM_SPEED = 10
-const RESET_SPEED = 10
+#
+#const SLAM_SPEED = 10
+#const RESET_SPEED = 10
 
 func _ready():
 	start_position = position

@@ -1,0 +1,182 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
+[ext_resource path="res://Structure/Tileset_Dungeon.tres" type="TileSet" id=3]
+[ext_resource path="res://GFX/SPRITES/Room_Border_Large.png" type="Texture" id=4]
+[ext_resource path="res://GFX/SPRITES/backdrop_Large.png" type="Texture" id=5]
+[ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=6]
+[ext_resource path="res://GFX/SPRITES/door_gateClosed.png" type="Texture" id=7]
+[ext_resource path="res://GFX/SPRITES/door_open.png" type="Texture" id=8]
+[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/Thwomp_Mini.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hazards/Sawblade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Structure/Trapdoor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Hazards/Spout.tscn" type="PackedScene" id=14]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 3075.12, 1143.66 )
+b = Vector2( -3150.68, 1140.95 )
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -2958.57, 2317.04 )
+b = Vector2( -2963.73, -826.825 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 2957.47, 1558.55 )
+b = Vector2( 2957.47, -1549.18 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 2971.85, -1554.34 )
+b = Vector2( -2964.84, -1549.18 )
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 350, 190, 0, 0, 0, 0, 347.688, 2055.41, 0, 0, 0, 0, 349.807, 2057.53, 0, 0, 0, 0, 352, 191, 0, 0, 0, 0, 352, 191 )
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 134.394, 256.651 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RoomBase" type="Node2D" parent="."]
+position = Vector2( 634.967, 356.201 )
+
+[node name="Backdrop" type="Sprite" parent="RoomBase"]
+position = Vector2( 2551.4, 1433.98 )
+z_index = -5
+texture = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="RoomBase"]
+position = Vector2( -645.294, -362.589 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 3.3, 3.3 )
+
+[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 9 )]
+
+[node name="TileMap" type="TileMap" parent="RoomBase"]
+position = Vector2( -634.967, -356.201 )
+tile_set = ExtResource( 3 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 1048589, 2, 0, 1048592, 4, 0, 1048596, 0, 0, 1048616, 0, 0, 1048636, 0, 0, 1048656, 4, 0, 1245200, 5, 0, 1245224, 5, 0, 1245244, 5, 0, 1245264, 5, 0, 1376347, 2, 0, 1441808, 5, 0, 1441832, 5, 0, 1441852, 5, 0, 1441872, 5, 0, 1572862, 2, 0, 1638416, 5, 0, 1638440, 5, 0, 1638460, 5, 0, 1638480, 5, 0, 1835024, 5, 0, 1835048, 5, 0, 1835068, 5, 0, 1835088, 5, 0, 2031614, 2, 0, 1966093, 2, 0, 1966100, 3, 0, 1966110, 0, 0, 1966124, 3, 0, 1966130, 0, 0, 1966144, 3, 0, 1966150, 0, 0, 1966158, 2, 0, 2031632, 5, 0, 2031656, 5, 0, 2031676, 5, 0, 2031696, 5, 0, 2228240, 5, 0, 2228264, 6, 0, 2228284, 5, 0, 2228304, 6, 0, 2490366, 2, 0, 2424848, 5, 0, 2490459, 2, 0, 2621456, 5, 0, 2818064, 6, 0, 2818068, 1, 0, 2818088, 1, 0, 2818108, 1, 0, 2818122, 0, 0, 2949133, 2, 0, 3014707, 5, 0, 3211315, 6, 0 )
+
+[node name="RoomBorder" type="Sprite" parent="RoomBase"]
+position = Vector2( 2560, 1440 )
+texture = ExtResource( 4 )
+
+[node name="Floor" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Floor"]
+position = Vector2( -18, 410.202 )
+shape = SubResource( 1 )
+
+[node name="LeftWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+position = Vector2( 0, -743 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/LeftWall"]
+shape = SubResource( 2 )
+
+[node name="RightWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/RightWall"]
+shape = SubResource( 3 )
+
+[node name="Ceiling" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Ceiling"]
+shape = SubResource( 4 )
+
+[node name="Structure" type="Node2D" parent="."]
+
+[node name="Trapdoor" parent="Structure" instance=ExtResource( 13 )]
+position = Vector2( 2241.17, 1185.26 )
+
+[node name="Trapdoor2" parent="Structure" instance=ExtResource( 13 )]
+position = Vector2( 3520.78, 1185.26 )
+
+[node name="Trapdoor3" parent="Structure" instance=ExtResource( 13 )]
+position = Vector2( 4798.14, 1185.26 )
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="Thwomp" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 1623.52, 452.548 )
+
+[node name="Thwomp2" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 2879.32, 452.548 )
+
+[node name="Thwomp3" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 4154.15, 452.548 )
+
+[node name="Thwomp4" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 2265.69, 452.548 )
+
+[node name="Thwomp5" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 3521.49, 452.548 )
+
+[node name="Thwomp6" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 4796.32, 452.548 )
+
+[node name="Sawblade" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 680.618, 825.708 )
+curve = SubResource( 6 )
+
+[node name="Sawblade2" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 584.726, 3067.17 )
+rotation = 3.14159
+curve = SubResource( 6 )
+
+[node name="Sawblade3" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 5822.81, 825.708 )
+curve = SubResource( 6 )
+
+[node name="Sawblade4" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 5726.92, 3067.17 )
+rotation = 3.14159
+curve = SubResource( 6 )
+
+[node name="Gargoyle" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 1371.93, 2552.94 )
+fire_delay = 1.75
+
+[node name="Spout" parent="Hazards" instance=ExtResource( 14 )]
+position = Vector2( 2701.67, 2698.87 )
+fire_delay = 1.0
+
+[node name="Spout2" parent="Hazards" instance=ExtResource( 14 )]
+position = Vector2( 3979.38, 2698.87 )
+fire_delay = 1.0
+
+[node name="Spout3" parent="Hazards" instance=ExtResource( 14 )]
+position = Vector2( 5265.57, 2698.87 )
+fire_delay = 1.0
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="ExitDoor" type="Sprite" parent="."]
+position = Vector2( 6013.08, 3089.08 )
+texture = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="ExitDoor"]
+collision_layer = 64
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
+shape = SubResource( 5 )
+
+[node name="EntranceDoor" type="Sprite" parent="."]
+position = Vector2( 388.056, 3084.29 )
+texture = ExtResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 661.479, 3150.72 )
+[connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]

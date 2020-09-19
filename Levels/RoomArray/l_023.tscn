@@ -1,0 +1,238 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
+[ext_resource path="res://Structure/Tileset_Dungeon.tres" type="TileSet" id=3]
+[ext_resource path="res://GFX/SPRITES/Room_Border_Large.png" type="Texture" id=4]
+[ext_resource path="res://GFX/SPRITES/backdrop_Large.png" type="Texture" id=5]
+[ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=6]
+[ext_resource path="res://GFX/SPRITES/door_gateClosed.png" type="Texture" id=7]
+[ext_resource path="res://GFX/SPRITES/door_open.png" type="Texture" id=8]
+[ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hazards/Spikes.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hazards/Thwomp_Mini.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Hazards/Spout.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SceenShake.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Hazards/Conveyor_Doublewide.tscn" type="PackedScene" id=15]
+
+[sub_resource type="SegmentShape2D" id=1]
+a = Vector2( 3075.12, 1143.66 )
+b = Vector2( -3150.68, 1140.95 )
+
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -2958.57, 2317.04 )
+b = Vector2( -2963.73, -826.825 )
+
+[sub_resource type="SegmentShape2D" id=3]
+a = Vector2( 2957.47, 1558.55 )
+b = Vector2( 2957.47, -1549.18 )
+
+[sub_resource type="SegmentShape2D" id=4]
+a = Vector2( 2971.85, -1554.34 )
+b = Vector2( -2964.84, -1549.18 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 134.394, 256.651 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RoomBase" type="Node2D" parent="."]
+position = Vector2( 634.967, 356.201 )
+
+[node name="Backdrop" type="Sprite" parent="RoomBase"]
+position = Vector2( 2551.4, 1433.98 )
+z_index = -5
+texture = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="RoomBase"]
+position = Vector2( -645.294, -362.589 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 3.3, 3.3 )
+
+[node name="SceenShake" parent="RoomBase/Camera2D" instance=ExtResource( 14 )]
+
+[node name="RoomBorder" type="Sprite" parent="RoomBase"]
+position = Vector2( 2560, 1440 )
+texture = ExtResource( 4 )
+
+[node name="Floor" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Floor"]
+position = Vector2( -18, 410.202 )
+shape = SubResource( 1 )
+
+[node name="LeftWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+position = Vector2( 0, -743 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/LeftWall"]
+shape = SubResource( 2 )
+
+[node name="RightWall" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/RightWall"]
+shape = SubResource( 3 )
+
+[node name="Ceiling" type="StaticBody2D" parent="RoomBase/RoomBorder"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBase/RoomBorder/Ceiling"]
+shape = SubResource( 4 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 327746, 1073741830, 0, 524354, 1073741829, 0, 720962, 1073741829, 0, 786436, 1073741825, 0, 786456, 1073741824, 0, 786466, 536870913, 0, 786486, 2, 0, 917570, 1073741829, 0, 983110, 536870914, 0, 983117, 536870915, 0, 983120, -2147483647, 0, 1114178, 1073741829, 0, 1310786, 1073741829, 0, 1441812, 536870912, 0, 1441822, 536870916, 0, 1441826, 536870913, 0, 1441838, 536870913, 0, 1441858, 536870918, 0, 1572934, 536870914, 0, 1638420, -2147483647, 0, 2097156, 3, 0, 2097175, 536870914, 0, 2097182, 536870916, 0, 2097186, 536870912, 0, 2097194, 536870913, 0, 2097208, 536870912, 0, 2097218, 536870916, 0, 2097222, 536870912, 0, 2162718, 1073741829, 0, 2359326, 1073741829, 0, 2490391, 536870914, 0, 2555934, 1073741829, 0, 2687012, 2, 0, 2687022, 536870913, 0, 2687042, 1073741824, 0, 2687052, 1073741825, 0, 2752542, 1073741829, 0, 2883606, 536870914, 0, 2949150, 1073741829, 0, 3145758, 1073741828, 0 )
+
+[node name="Structure" type="Node2D" parent="."]
+
+[node name="Conveyor" parent="Structure" instance=ExtResource( 15 )]
+position = Vector2( 5229.92, 2662.89 )
+reverse = true
+
+[node name="Conveyor2" parent="Structure" instance=ExtResource( 15 )]
+position = Vector2( 4097.75, 2665.01 )
+reverse = true
+
+[node name="Conveyor3" parent="Structure" instance=ExtResource( 15 )]
+position = Vector2( 3545.33, 2666.6 )
+reverse = true
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="SpikeTrapRow2" type="Node2D" parent="Hazards"]
+position = Vector2( 39.0427, 639.145 )
+
+[node name="SpikeTrap" parent="Hazards/SpikeTrapRow2" instance=ExtResource( 9 )]
+position = Vector2( 2384.92, 748.956 )
+
+[node name="SpikeTrap2" parent="Hazards/SpikeTrapRow2" instance=ExtResource( 9 )]
+position = Vector2( 2660.61, 748.956 )
+
+[node name="SpikeTrap3" parent="Hazards/SpikeTrapRow2" instance=ExtResource( 9 )]
+position = Vector2( 2936.3, 748.956 )
+
+[node name="SpikeTrap4" parent="Hazards/SpikeTrapRow2" instance=ExtResource( 9 )]
+position = Vector2( 3211.98, 748.956 )
+
+[node name="SpikeTrap5" parent="Hazards/SpikeTrapRow2" instance=ExtResource( 9 )]
+position = Vector2( 3481.81, 748.956 )
+
+[node name="SpikeTrap6" parent="Hazards/SpikeTrapRow2" instance=ExtResource( 9 )]
+position = Vector2( 3757.49, 748.956 )
+
+[node name="SpikeTrap7" parent="Hazards/SpikeTrapRow2" instance=ExtResource( 9 )]
+position = Vector2( 4033.18, 748.956 )
+
+[node name="SpikeTrapRow3" type="Node2D" parent="Hazards"]
+position = Vector2( -68.3245, 1269.12 )
+
+[node name="SpikeTrap" parent="Hazards/SpikeTrapRow3" instance=ExtResource( 9 )]
+position = Vector2( 2384.92, 748.956 )
+
+[node name="SpikeTrap2" parent="Hazards/SpikeTrapRow3" instance=ExtResource( 9 )]
+position = Vector2( 2660.61, 748.956 )
+
+[node name="SpikeTrap3" parent="Hazards/SpikeTrapRow3" instance=ExtResource( 9 )]
+position = Vector2( 2936.3, 748.956 )
+
+[node name="SpikeTrap4" parent="Hazards/SpikeTrapRow3" instance=ExtResource( 9 )]
+position = Vector2( 3211.98, 748.956 )
+
+[node name="SpikeTrap5" parent="Hazards/SpikeTrapRow3" instance=ExtResource( 9 )]
+position = Vector2( 3481.81, 748.956 )
+
+[node name="SpikeTrap6" parent="Hazards/SpikeTrapRow3" instance=ExtResource( 9 )]
+position = Vector2( 3757.49, 748.956 )
+
+[node name="SpikeTrap7" parent="Hazards/SpikeTrapRow3" instance=ExtResource( 9 )]
+position = Vector2( 4033.18, 748.956 )
+
+[node name="Gargoyle" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 4574.48, 652.536 )
+
+[node name="Gargoyle2" parent="Hazards" instance=ExtResource( 10 )]
+position = Vector2( 2271.18, 3050.11 )
+
+[node name="Spikes4" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 6101.69, 1255.56 )
+rotation = -1.5708
+
+[node name="Spikes5" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 6101.69, 1549.71 )
+rotation = -1.5708
+
+[node name="Spikes7" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 5045.67, 1364.96 )
+rotation = -1.5708
+
+[node name="Spikes8" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 5045.67, 1659.12 )
+rotation = -1.5708
+
+[node name="Spikes6" parent="Hazards" instance=ExtResource( 11 )]
+position = Vector2( 6101.69, 1985.29 )
+rotation = -1.5708
+
+[node name="Thwomp" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 484.649, 1731.91 )
+
+[node name="Thwomp2" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 484.649, 2437.5 )
+
+[node name="Thwomp3" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 484.649, 3043.31 )
+
+[node name="Thwomp4" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 484.649, 1225.88 )
+
+[node name="Thwomp5" parent="Hazards" instance=ExtResource( 12 )]
+position = Vector2( 5967.93, 2435.57 )
+SLAM_SPEED = 8
+
+[node name="Spout" parent="Hazards" instance=ExtResource( 13 )]
+position = Vector2( 1337.64, 712.638 )
+fire_delay = 1.5
+
+[node name="Spout2" parent="Hazards" instance=ExtResource( 13 )]
+position = Vector2( 1799.05, 712.638 )
+fire_delay = 1.25
+
+[node name="Spout3" parent="Hazards" instance=ExtResource( 13 )]
+position = Vector2( 2246.19, 712.638 )
+fire_delay = 1.0
+
+[node name="Spout4" parent="Hazards" instance=ExtResource( 13 )]
+position = Vector2( 2707.6, 712.638 )
+fire_delay = 0.9
+
+[node name="Spout5" parent="Hazards" instance=ExtResource( 13 )]
+position = Vector2( 3173.77, 712.638 )
+fire_delay = 1.1
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="ExitDoor" type="Sprite" parent="."]
+position = Vector2( 6013.08, 3089.08 )
+texture = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="ExitDoor"]
+collision_layer = 64
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
+shape = SubResource( 5 )
+
+[node name="EntranceDoor" type="Sprite" parent="."]
+position = Vector2( 388.056, 510.719 )
+texture = ExtResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 706.563, 573.544 )
+[connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]
