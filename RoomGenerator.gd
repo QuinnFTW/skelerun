@@ -26,6 +26,8 @@ var waterfall_scene = "res://Levels/EndCinematicFall.tscn"
 var active_level
 var index = -1
 
+var time_remaining
+
 func _ready():
 	add_to_group("Gamestate")
 #	For now, pick a room at random and load it. Later we will just load the starting room.
@@ -33,7 +35,13 @@ func _ready():
 	levels.shuffle()
 	load_level()
 	unfreeze_player()
+	$Timer.start()
 	pass
+	
+func _physics_process(delta):
+	time_remaining = $Timer.time_left
+	get_tree().call_group("UI", "update_text", time_remaining)
+	
 	
 func generate():
 	levels_generated += 1

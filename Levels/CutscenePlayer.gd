@@ -11,3 +11,6 @@ func end_cinematic():
 	
 func end_fall():
 	get_tree().change_scene("res://Levels/EndCinematicFall.tscn")
+	
+func outro_text():
+	get_tree().change_scene("res://Levels/outroText.tscn")

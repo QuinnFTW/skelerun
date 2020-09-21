@@ -1,15 +1,16 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=1]
 [ext_resource path="res://Hazards/DeathWall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Animator.gd" type="Script" id=3]
 [ext_resource path="res://SFX/DontGiveUpSkeleton(looping).wav" type="AudioStream" id=4]
 [ext_resource path="res://RoomGenerator.gd" type="Script" id=5]
-[ext_resource path="res://Hazards/DeathWall.gd" type="Script" id=6]
+[ext_resource path="res://Fonts/PixelSplitter_large.tres" type="DynamicFont" id=6]
 [ext_resource path="res://GFX/SPRITES/deathWal_edgel.png" type="Texture" id=7]
 [ext_resource path="res://GFX/SPRITES/deathWall.png" type="Texture" id=8]
+[ext_resource path="res://TimerLabel.gd" type="Script" id=9]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 resource_name = "fade_music"
 tracks/0/type = "value"
 tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
@@ -48,10 +49,10 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 148.663, 1432.53 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "wall_animate"
 length = 3.0
 loop = true
@@ -80,8 +81,7 @@ tracks/1/keys = {
 "values": [ Vector2( -656.829, -81.5581 ), Vector2( -656.829, -171.382 ), Vector2( -656.829, -81.5581 ), Vector2( -656.829, 0.100098 ), Vector2( -656.829, -81.5581 ), Vector2( -656.829, -171.382 ), Vector2( -656.829, -81.5581 ), Vector2( -656.829, 0.100098 ), Vector2( -656.829, -81.5581 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "end_cinematic"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "method"
 tracks/0/path = NodePath("RoomGenerator")
 tracks/0/interp = 1
@@ -97,8 +97,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "fade_cut"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasModulate:color")
 tracks/0/interp = 1
@@ -112,8 +111,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasModulate:color")
 tracks/0/interp = 1
@@ -127,7 +125,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=7]
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasModulate:color")
@@ -173,14 +171,14 @@ script = ExtResource( 5 )
 [node name="VolumeTween" type="AnimationPlayer" parent="RoomGenerator" groups=[
 "Animator",
 ]]
-anims/fade_music = SubResource( 5 )
+anims/fade_music = SubResource( 1 )
 
-[node name="DeathWall" type="Node2D" parent="." groups=[
-"DeathWall",
-] instance=ExtResource( 2 )]
-position = Vector2( -3547.39, 1781.43 )
-scale = Vector2( 1.23434, 1.23434 )
-script = ExtResource( 6 )
+[node name="Timer" type="Timer" parent="RoomGenerator"]
+process_mode = 0
+wait_time = 300.0
+one_shot = true
+
+[node name="DeathWall" parent="." instance=ExtResource( 2 )]
 
 [node name="Wall" type="Sprite" parent="DeathWall"]
 position = Vector2( -656.829, -81.5581 )
@@ -191,15 +189,15 @@ position = Vector2( -655.841, -46.2449 )
 texture = ExtResource( 7 )
 
 [node name="Area2D2" type="Area2D" parent="DeathWall"]
-collision_layer = 4
+collision_layer = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathWall/Area2D2"]
 position = Vector2( 2385.08, -12.9624 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 
 [node name="WallAnimation" type="AnimationPlayer" parent="DeathWall"]
 autoplay = "wall_animate"
-anims/wall_animate = SubResource( 7 )
+anims/wall_animate = SubResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." groups=[
 "UI",
@@ -208,13 +206,31 @@ anims/wall_animate = SubResource( 7 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=[
 "Animator",
 ]]
-anims/end_cinematic = SubResource( 1 )
-anims/fade_cut = SubResource( 2 )
-anims/fade_out = SubResource( 4 )
-anims/fade_out_in = SubResource( 3 )
+anims/end_cinematic = SubResource( 4 )
+anims/fade_cut = SubResource( 5 )
+anims/fade_out = SubResource( 6 )
+anims/fade_out_in = SubResource( 7 )
 script = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
+
+[node name="Label" type="Label" parent="." groups=[
+"UI",
+]]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 5839.46
+margin_right = 5954.46
+margin_bottom = 50.0
+rect_scale = Vector2( 3.60149, 3.60149 )
+custom_fonts/font = ExtResource( 6 )
+text = "000"
+align = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="RoomGenerator/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="DeathWall/Area2D2" to="DeathWall" method="_on_Area2D2_body_entered"]

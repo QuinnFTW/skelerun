@@ -1,26 +1,15 @@
-1. Add start screen with "start game" and "quit" buttons + art
-
 2. Add end screen that displays final score + option to quit or return to menu
 
 3. Timer system that:
-	A: Begins counting down when the player enters the first level
-	B. Is displayed in the upper right corner
-	C. Will end the game if it reaches 0
-	D. Is is able to be saved and shown on the end game screen
 	E. Begins with a fair but challenging amount of time based on playtests
 
 4. Score system that: 
 	A. Is shown at the end game screen
 	B. Goes down if the player is hit
+	C. Goes up when the player finishes a room
 	C. Is balaced properly
 
-5. Create finished death wall sprite/animation
-
-6. Add fucntionality for death wall that ends the game on touch
-
 7. Create and add music/ SFX for Entry + exit rooms and end cinematics
-
-8. Create and add "Congratulations! You have reached the bonepile!  ...again" text video + scene
 
 
 Optional:

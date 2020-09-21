@@ -29,4 +29,4 @@ func stop_motion():
 
 
 func _on_Area2D2_body_entered(body):
-	get_tree().call_group("Gamestate", "end_game")
+	get_tree().call_group("Gamestate", "game_end")
