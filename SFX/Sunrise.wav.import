@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sunrise.wav-5782da550953bd69fa7ec0933db84f14.sample"
+
+[deps]
+
+source_file="res://SFX/Sunrise.wav"
+dest_files=[ "res://.import/Sunrise.wav-5782da550953bd69fa7ec0933db84f14.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

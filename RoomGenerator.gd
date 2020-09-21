@@ -1,6 +1,6 @@
 extends Node2D
 
-var levels_to_generate = 1
+var levels_to_generate = 20
 var levels_generated = 0
 var levels = ["res://Levels/RoomArray/l_000.tscn","res://Levels/RoomArray/l_001.tscn",
 "res://Levels/RoomArray/l_002.tscn","res://Levels/RoomArray/l_003.tscn",
@@ -27,6 +27,7 @@ var active_level
 var index = -1
 
 var time_remaining
+var room_score = 100 # the score reward for completing a room
 
 func _ready():
 	add_to_group("Gamestate")
@@ -40,11 +41,13 @@ func _ready():
 	
 func _physics_process(delta):
 	time_remaining = $Timer.time_left
+	GlobalVars.score -= 0.1
 	get_tree().call_group("UI", "update_text", time_remaining)
 	
 	
 func generate():
 	levels_generated += 1
+	GlobalVars.score += room_score
 #	Check if levels_generated == levels_to_generate. If so, load the exit room.
 	if (levels_generated >= levels_to_generate):
 		$VolumeTween.play("fade_music")
@@ -57,10 +60,11 @@ func generate():
 		yield(t, "timeout")
 		t.queue_free()
 		get_tree().change_scene("res://Levels/ExitRoom.tscn")
-		
+		print("made it to the end")
 #	else unload the current active room and load a new one at random, setting it as active
 	else:
 		scene_transition()
+		print("loaded new scene")
 	
 #	load_level()
 	

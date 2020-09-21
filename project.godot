@@ -16,13 +16,18 @@ _global_script_class_icons={
 [application]
 
 config/name="Skelerun"
-run/main_scene="res://GameManager.tscn"
+run/main_scene="res://Levels/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GlobalVars="*res://GlobalVars.gd"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

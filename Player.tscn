@@ -18,6 +18,7 @@ var push_dir = 0
 var is_frozen = false
 var bone_scene = load(\"res://Bone.tscn\")
 var explosion_speed = 6000
+var score_penalty = 10 #penalty to the score for being hit
 
 signal animate
 
@@ -104,6 +105,7 @@ func hurt():
 		get_tree().call_group(\"Camera\", \"start\")
 		$HurtSFX.play()
 		$Timer.start()
+		GlobalVars.score -= score_penalty
 		$StunTimer.start()
 		stun_time_out = true
 		time_out = true

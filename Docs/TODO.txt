@@ -1,15 +1,8 @@
-2. Add end screen that displays final score + option to quit or return to menu
-
 3. Timer system that:
 	E. Begins with a fair but challenging amount of time based on playtests
 
 4. Score system that: 
-	A. Is shown at the end game screen
-	B. Goes down if the player is hit
-	C. Goes up when the player finishes a room
 	C. Is balaced properly
-
-7. Create and add music/ SFX for Entry + exit rooms and end cinematics
 
 
 Optional:

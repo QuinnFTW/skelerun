@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GetReady.wav-0613e66576241e43522fafd399a025a7.sample"
+
+[deps]
+
+source_file="res://SFX/GetReady.wav"
+dest_files=[ "res://.import/GetReady.wav-0613e66576241e43522fafd399a025a7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
