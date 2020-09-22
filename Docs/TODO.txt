@@ -1,14 +1,18 @@
-3. Timer system that:
-	E. Begins with a fair but challenging amount of time based on playtests
+To do:
 
-4. Score system that: 
-	C. Is balaced properly
+1. Timer system that:
+	E. Begins with a fair but challenging amount of time based on playtests (+ balanced with time pickups)
+
+2. Score system that: 
+	C. Is balaced properly 
+		NOTE: Score increases when completing a room and picking up a gem,
+			decreases when hit and constantly ticks down. We need to balance these values
+
+3. Add pickups to most/every level
+
+
 
 
 Optional:
 
-1. Add time pickups that add aditional time to the counter
-
-2. Add points pickups in challenging locations that add to the score
-
-3. Create extra decorations to spice up existing levels
+1. Create extra decorations to spice up existing levels

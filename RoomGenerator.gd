@@ -28,6 +28,7 @@ var index = -1
 
 var time_remaining
 var room_score = 100 # the score reward for completing a room
+var time_bonus = 15 # number of seconds added to the timer when collecting a time pickup
 
 func _ready():
 	add_to_group("Gamestate")
@@ -109,3 +110,10 @@ func freeze_player():
 	
 func unfreeze_player():
 	get_tree().call_group("Player", "unfreeze")
+	
+func time_pickup():
+#	$Timer.wait_time += time_bonus
+	$Timer.stop()
+	$Timer.set_wait_time(time_remaining + time_bonus) 
+	$Timer.start()
+	

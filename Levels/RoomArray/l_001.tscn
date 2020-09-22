@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=1]
 [ext_resource path="res://Structure/RoomTransition.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Hazards/Spikes.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Hazards/Gargoyle.tscn" type="PackedScene" id=13]
 [ext_resource path="res://SceenShake.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Items/GemPickup.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Items/TimePickup.tscn" type="PackedScene" id=16]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 3075.12, 1143.66 )
@@ -277,6 +279,15 @@ texture = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 753.246, 3150.72 )
+
+[node name="GemPickup" parent="." instance=ExtResource( 15 )]
+position = Vector2( 5681.25, 1382.59 )
+
+[node name="GemPickup2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 5969.75, 1376.94 )
+
+[node name="TimePickup" parent="." instance=ExtResource( 16 )]
+position = Vector2( 2824.54, 669.83 )
 [connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]
 
 [editable path="Hazards/Gargoyle3"]

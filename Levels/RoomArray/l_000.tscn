@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Hazards/Spikes.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=13]
 [ext_resource path="res://SceenShake.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Items/BombPickup.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Items/GemPickup.tscn" type="PackedScene" id=16]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 3075.12, 1143.66 )
@@ -206,6 +208,14 @@ scale = Vector2( 0.624759, 0.624759 )
 position = Vector2( 4848, 3292 )
 
 [node name="Decoration" type="Node2D" parent="."]
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="BombPickup" parent="Pickups" instance=ExtResource( 15 )]
+position = Vector2( 2007.73, 497.438 )
+
+[node name="GemPickup" parent="Pickups" instance=ExtResource( 16 )]
+position = Vector2( 5843.4, 2744.9 )
 
 [node name="ExitDoor" type="Sprite" parent="."]
 position = Vector2( 6013.08, 883.689 )

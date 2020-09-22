@@ -43,6 +43,7 @@ func win_game():
 func update_GUI(time):
 #	get_tree().call_group("GUI", "update_GUI", lives, coins)
 	pass
+	
 
 func _on_Timer_timeout():
 	game_end()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=1]
 [ext_resource path="res://Hazards/DeathWall.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://GFX/SPRITES/deathWal_edgel.png" type="Texture" id=7]
 [ext_resource path="res://GFX/SPRITES/deathWall.png" type="Texture" id=8]
 [ext_resource path="res://TimerLabel.gd" type="Script" id=9]
+[ext_resource path="res://GFX/SPRITES/bomb.png" type="Texture" id=10]
+[ext_resource path="res://BombLabel.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_music"
@@ -182,10 +184,14 @@ one_shot = true
 
 [node name="Wall" type="Sprite" parent="DeathWall"]
 position = Vector2( -656.829, -81.5581 )
+z_index = 10
+z_as_relative = false
 texture = ExtResource( 8 )
 
 [node name="Edge" type="Sprite" parent="DeathWall"]
 position = Vector2( -655.841, -46.2449 )
+z_index = 11
+z_as_relative = false
 texture = ExtResource( 7 )
 
 [node name="Area2D2" type="Area2D" parent="DeathWall"]
@@ -232,5 +238,27 @@ script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BombLabel" type="Label" parent="." groups=[
+"UI",
+]]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 5343.33
+margin_right = 5458.33
+margin_bottom = 50.0
+rect_scale = Vector2( 3.60149, 3.60149 )
+custom_fonts/font = ExtResource( 6 )
+text = "000"
+align = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="BombLabel"]
+position = Vector2( -13.3262, 23.2631 )
+scale = Vector2( 0.189222, 0.189222 )
+texture = ExtResource( 10 )
 [connection signal="timeout" from="RoomGenerator/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="DeathWall/Area2D2" to="DeathWall" method="_on_Area2D2_body_entered"]

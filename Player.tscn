@@ -19,6 +19,7 @@ var is_frozen = false
 var bone_scene = load(\"res://Bone.tscn\")
 var explosion_speed = 6000
 var score_penalty = 10 #penalty to the score for being hit
+var bombs = 2
 
 signal animate
 
@@ -34,6 +35,7 @@ const HURT_JUMP = 2000
 
 func _ready():
 	add_to_group(\"Player\")
+	get_tree().call_group(\"UI\", \"update_bombs\", bombs)
 
 func _physics_process(_delta):
 	apply_gravity(_delta)
@@ -150,6 +152,21 @@ func bone_explosion():
 	bone.rotation_degrees = rand_range(0, 360)
 	bone.apply_impulse(Vector2(), Vector2(explosion_speed, 0).rotated(bone.rotation_degrees))
 
+func add_bomb():
+	bombs += 1
+	get_tree().call_group(\"UI\", \"update_bombs\", bombs)
+	
+func _input(ev):
+    if ev.is_action_pressed(\"bomb\"):
+        bomb_blast()
+	
+func bomb_blast():
+	if bombs >= 1:
+		get_tree().call_group(\"DeathWall\", \"reset_position\")
+		get_tree().call_group(\"Camera\", \"start\")
+		bombs -= 1
+		get_tree().call_group(\"UI\", \"update_bombs\", bombs)
+
 
 "
 
@@ -184,7 +201,7 @@ stream = ExtResource( 2 )
 volume_db = -3.029
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.5
 
 [node name="StunTimer" type="Timer" parent="."]
 [connection signal="animate" from="." to="PlayerAnimation" method="_on_Player_animate"]

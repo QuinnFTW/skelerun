@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Hazards/TorchyDark.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Hazards/SpikeTrap.tscn" type="PackedScene" id=12]
 [ext_resource path="res://SceenShake.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Items/GemPickup.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Items/TimePickup.tscn" type="PackedScene" id=15]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 3075.12, 1143.66 )
@@ -160,4 +162,10 @@ texture = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 753.246, 3150.72 )
+
+[node name="TimePickup" parent="." instance=ExtResource( 15 )]
+position = Vector2( 3389.93, 3092.15 )
+
+[node name="GemPickup" parent="." instance=ExtResource( 14 )]
+position = Vector2( 3369.77, 1499.61 )
 [connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]
