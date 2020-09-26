@@ -87,6 +87,8 @@ format = 1
 
 [node name="Hazards" type="Node2D" parent="."]
 
+[node name="Pickups" type="Node2D" parent="."]
+
 [node name="Decoration" type="Node2D" parent="."]
 
 [node name="ExitDoor" type="Sprite" parent="."]

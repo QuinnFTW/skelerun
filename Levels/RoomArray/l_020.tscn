@@ -27,6 +27,34 @@ b = Vector2( 2957.47, -1549.18 )
 a = Vector2( 2971.85, -1554.34 )
 b = Vector2( -2964.84, -1549.18 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "fire"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "firing", "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -15 ), Vector2( 0, 0 ), Vector2( 0, 15 ), Vector2( 0, 0 ) ]
+}
+
 [sub_resource type="Animation" id=6]
 resource_name = "fire"
 length = 0.5
@@ -223,35 +251,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -15 ), Vector2( 0, 0 ), Vector2( 0, 15 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "fire"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ "firing", "idle" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -15 ), Vector2( 0, 0 ), Vector2( 0, 15 ), Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 134.394, 256.651 )
 
 [node name="Level" type="Node2D"]
@@ -328,7 +328,7 @@ fire_delay = 4.0
 flip_h = true
 
 [node name="AnimationPlayer" parent="Hazards/Gargoyle7" index="1"]
-anims/fire = SubResource( 6 )
+anims/fire = SubResource( 5 )
 
 [node name="Gargoyle8" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 2485.09, 1336.38 )
@@ -338,7 +338,7 @@ fire_delay = 4.0
 flip_h = true
 
 [node name="AnimationPlayer" parent="Hazards/Gargoyle8" index="1"]
-anims/fire = SubResource( 7 )
+anims/fire = SubResource( 6 )
 
 [node name="Gargoyle9" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 958.066, 1069.28 )
@@ -348,7 +348,7 @@ fire_delay = 4.0
 flip_h = true
 
 [node name="AnimationPlayer" parent="Hazards/Gargoyle9" index="1"]
-anims/fire = SubResource( 8 )
+anims/fire = SubResource( 7 )
 
 [node name="Gargoyle2" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 3253.16, 1973.8 )
@@ -358,7 +358,7 @@ fire_delay = 4.0
 flip_h = true
 
 [node name="AnimationPlayer" parent="Hazards/Gargoyle2" index="1"]
-anims/fire = SubResource( 9 )
+anims/fire = SubResource( 8 )
 
 [node name="Gargoyle6" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 3253.16, 2986.77 )
@@ -368,7 +368,7 @@ fire_delay = 4.0
 flip_h = true
 
 [node name="AnimationPlayer" parent="Hazards/Gargoyle6" index="1"]
-anims/fire = SubResource( 10 )
+anims/fire = SubResource( 9 )
 
 [node name="Gargoyle5" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 4019.19, 562.687 )
@@ -378,7 +378,7 @@ fire_delay = 4.0
 flip_h = true
 
 [node name="AnimationPlayer" parent="Hazards/Gargoyle5" index="1"]
-anims/fire = SubResource( 11 )
+anims/fire = SubResource( 10 )
 
 [node name="Gargoyle3" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 4791.5, 2223.83 )
@@ -388,7 +388,7 @@ fire_delay = 4.0
 flip_h = true
 
 [node name="AnimationPlayer" parent="Hazards/Gargoyle3" index="1"]
-anims/fire = SubResource( 12 )
+anims/fire = SubResource( 11 )
 
 [node name="Gargoyle4" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 4791.5, 1220.93 )
@@ -398,7 +398,7 @@ fire_delay = 4.0
 flip_h = true
 
 [node name="AnimationPlayer" parent="Hazards/Gargoyle4" index="1"]
-anims/fire = SubResource( 13 )
+anims/fire = SubResource( 12 )
 
 [node name="Decoration" type="Node2D" parent="."]
 
@@ -411,7 +411,7 @@ collision_layer = 64
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 13 )
 
 [node name="EntranceDoor" type="Sprite" parent="."]
 position = Vector2( 388.056, 3084.29 )

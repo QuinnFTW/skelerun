@@ -28,6 +28,23 @@ b = Vector2( 2957.47, -1549.18 )
 a = Vector2( 2971.85, -1554.34 )
 b = Vector2( -2964.84, -1549.18 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
 [sub_resource type="Animation" id=6]
 resource_name = "fire"
 length = 0.4
@@ -164,24 +181,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "fire"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 134.394, 256.651 )
 
 [node name="Level" type="Node2D"]
@@ -276,7 +276,7 @@ position = Vector2( 3070.28, 2160.14 )
 fire_delay = 2.0
 
 [node name="AnimationPlayer" parent="Hazards/Spout2" index="0"]
-anims/fire = SubResource( 6 )
+anims/fire = SubResource( 5 )
 
 [node name="Sprite" parent="Hazards/Spout2" index="1"]
 flip_v = true
@@ -286,7 +286,7 @@ position = Vector2( 3323.3, 1782.4 )
 fire_delay = 2.0
 
 [node name="AnimationPlayer" parent="Hazards/Spout3" index="0"]
-anims/fire = SubResource( 7 )
+anims/fire = SubResource( 6 )
 
 [node name="Sprite" parent="Hazards/Spout3" index="1"]
 flip_v = true
@@ -296,7 +296,7 @@ position = Vector2( 3572.75, 1390.4 )
 fire_delay = 2.0
 
 [node name="AnimationPlayer" parent="Hazards/Spout4" index="0"]
-anims/fire = SubResource( 8 )
+anims/fire = SubResource( 7 )
 
 [node name="Sprite" parent="Hazards/Spout4" index="1"]
 flip_v = true
@@ -306,7 +306,7 @@ position = Vector2( 3825.76, 1012.66 )
 fire_delay = 2.0
 
 [node name="AnimationPlayer" parent="Hazards/Spout5" index="0"]
-anims/fire = SubResource( 9 )
+anims/fire = SubResource( 8 )
 
 [node name="Sprite" parent="Hazards/Spout5" index="1"]
 flip_v = true
@@ -316,7 +316,7 @@ position = Vector2( 4659.64, 1012.66 )
 fire_delay = 2.0
 
 [node name="AnimationPlayer" parent="Hazards/Spout6" index="0"]
-anims/fire = SubResource( 10 )
+anims/fire = SubResource( 9 )
 
 [node name="Sprite" parent="Hazards/Spout6" index="1"]
 flip_v = true
@@ -326,7 +326,7 @@ position = Vector2( 4923.35, 1393.97 )
 fire_delay = 2.0
 
 [node name="AnimationPlayer" parent="Hazards/Spout7" index="0"]
-anims/fire = SubResource( 11 )
+anims/fire = SubResource( 10 )
 
 [node name="Sprite" parent="Hazards/Spout7" index="1"]
 flip_v = true
@@ -336,7 +336,7 @@ position = Vector2( 5179.93, 1775.27 )
 fire_delay = 2.0
 
 [node name="AnimationPlayer" parent="Hazards/Spout8" index="0"]
-anims/fire = SubResource( 12 )
+anims/fire = SubResource( 11 )
 
 [node name="Sprite" parent="Hazards/Spout8" index="1"]
 flip_v = true
@@ -346,7 +346,7 @@ position = Vector2( 5429.38, 2160.14 )
 fire_delay = 2.0
 
 [node name="AnimationPlayer" parent="Hazards/Spout9" index="0"]
-anims/fire = SubResource( 13 )
+anims/fire = SubResource( 12 )
 
 [node name="Sprite" parent="Hazards/Spout9" index="1"]
 flip_v = true
@@ -356,7 +356,7 @@ position = Vector2( 5692.13, 2554.26 )
 fire_delay = 2.0
 
 [node name="AnimationPlayer" parent="Hazards/Spout10" index="0"]
-anims/fire = SubResource( 14 )
+anims/fire = SubResource( 13 )
 
 [node name="Sprite" parent="Hazards/Spout10" index="1"]
 flip_v = true
@@ -372,7 +372,7 @@ collision_layer = 64
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 14 )
 
 [node name="EntranceDoor" type="Sprite" parent="."]
 position = Vector2( 388.056, 519.188 )

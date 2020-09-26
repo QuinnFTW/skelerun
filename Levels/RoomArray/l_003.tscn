@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://SceenShake.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Items/GemPickup.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Items/TimePickup.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Hazards/Spout.tscn" type="PackedScene" id=16]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 3075.12, 1143.66 )
@@ -32,10 +33,45 @@ b = Vector2( 2957.47, -1549.18 )
 a = Vector2( 2971.85, -1554.34 )
 b = Vector2( -2964.84, -1549.18 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="Animation" id=5]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "fire"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 5, 0 ), Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 134.394, 256.651 )
 
 [node name="Level" type="Node2D"]
+position = Vector2( -0.888184, -538.253 )
 script = ExtResource( 2 )
 
 [node name="RoomBase" type="Node2D" parent="."]
@@ -88,7 +124,7 @@ shape = SubResource( 4 )
 tile_set = ExtResource( 3 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 983116, 3, 0, 1376342, 2, 0, 1835017, 2, 0, 1835094, 2, 0, 1900566, 4, 0, 1900570, 0, 0, 1900580, 4, 0, 1900588, 4, 0, 1900592, 0, 0, 1900602, 4, 0, 1900610, 4, 0, 1900614, 0, 0, 1900624, 4, 0, 2097174, 5, 0, 2097232, 5, 0, 2293769, 2, 0, 2293782, 5, 0, 2293840, 5, 0, 2359382, 2, 0, 2490390, 5, 0, 2490448, 5, 0, 2686998, 5, 0, 2687009, 1, 0, 2687029, 1, 0, 2687056, 6, 0, 2818057, 2, 0, 2883606, 5, 0, 2883670, 2, 0, 3080214, 5, 0, 3276822, 6, 0 )
+tile_data = PoolIntArray( 983126, 2, 0, 1441878, 2, 0, 1900553, 2, 0, 1900566, 4, 0, 1900570, 0, 0, 1900580, 4, 0, 1900588, 4, 0, 1900592, 0, 0, 1900602, 4, 0, 1900610, 4, 0, 1900614, 0, 0, 1900624, 4, 0, 1900630, 2, 0, 2097174, 5, 0, 2097232, 5, 0, 2293782, 5, 0, 2293840, 5, 0, 2359305, 2, 0, 2359382, 2, 0, 2490390, 5, 0, 2490448, 5, 0, 2686998, 5, 0, 2687009, 1, 0, 2687029, 1, 0, 2687056, 6, 0, 2818057, 2, 0, 2818134, 2, 0, 2883606, 5, 0, 3080214, 5, 0, 3276822, 6, 0 )
 
 [node name="Structure" type="Node2D" parent="."]
 
@@ -142,6 +178,38 @@ position = Vector2( 1847.67, 2219.87 )
 [node name="TorchyDark2" parent="Hazards" instance=ExtResource( 11 )]
 position = Vector2( 4955.62, 2219.87 )
 
+[node name="Spout" parent="Hazards" instance=ExtResource( 16 )]
+position = Vector2( 2029.16, 300.637 )
+
+[node name="Sprite" parent="Hazards/Spout" index="1"]
+flip_v = true
+
+[node name="Spout2" parent="Hazards" instance=ExtResource( 16 )]
+position = Vector2( 3378.88, 300.637 )
+
+[node name="AnimationPlayer" parent="Hazards/Spout2" index="0"]
+anims/fire = SubResource( 5 )
+
+[node name="Sprite" parent="Hazards/Spout2" index="1"]
+flip_v = true
+
+[node name="Spout3" parent="Hazards" instance=ExtResource( 16 )]
+position = Vector2( 4800.08, 300.637 )
+
+[node name="AnimationPlayer" parent="Hazards/Spout3" index="0"]
+anims/fire = SubResource( 6 )
+
+[node name="Sprite" parent="Hazards/Spout3" index="1"]
+flip_v = true
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="TimePickup" parent="Pickups" instance=ExtResource( 15 )]
+position = Vector2( 3407.99, 3092.15 )
+
+[node name="GemPickup" parent="Pickups" instance=ExtResource( 14 )]
+position = Vector2( 3399.88, 1523.69 )
+
 [node name="Decoration" type="Node2D" parent="."]
 
 [node name="ExitDoor" type="Sprite" parent="."]
@@ -154,7 +222,7 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
 position = Vector2( 0, 20.1587 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="EntranceDoor" type="Sprite" parent="."]
 position = Vector2( 388.056, 3084.29 )
@@ -162,10 +230,10 @@ texture = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 753.246, 3150.72 )
-
-[node name="TimePickup" parent="." instance=ExtResource( 15 )]
-position = Vector2( 3389.93, 3092.15 )
-
-[node name="GemPickup" parent="." instance=ExtResource( 14 )]
-position = Vector2( 3369.77, 1499.61 )
 [connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]
+
+[editable path="Hazards/Spout"]
+
+[editable path="Hazards/Spout2"]
+
+[editable path="Hazards/Spout3"]

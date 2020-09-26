@@ -217,6 +217,12 @@ position = Vector2( 2007.73, 497.438 )
 [node name="GemPickup" parent="Pickups" instance=ExtResource( 16 )]
 position = Vector2( 5843.4, 2744.9 )
 
+[node name="GemPickup2" parent="Pickups" instance=ExtResource( 16 )]
+position = Vector2( 646.918, 3165.19 )
+
+[node name="GemPickup3" parent="Pickups" instance=ExtResource( 16 )]
+position = Vector2( 4263.53, 1002.48 )
+
 [node name="ExitDoor" type="Sprite" parent="."]
 position = Vector2( 6013.08, 883.689 )
 texture = ExtResource( 8 )

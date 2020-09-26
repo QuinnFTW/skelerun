@@ -31,12 +31,12 @@ b = Vector2( 2957.47, -1549.18 )
 a = Vector2( 2971.85, -1554.34 )
 b = Vector2( -2964.84, -1549.18 )
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=5]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 350, 190, 0, 0, 0, 0, 347.688, 2055.41, 0, 0, 0, 0, 349.807, 2057.53, 0, 0, 0, 0, 352, 191, 0, 0, 0, 0, 352, 191 )
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 134.394, 256.651 )
 
 [node name="Level" type="Node2D"]
@@ -128,21 +128,21 @@ position = Vector2( 4796.32, 452.548 )
 
 [node name="Sawblade" parent="Hazards" instance=ExtResource( 11 )]
 position = Vector2( 680.618, 825.708 )
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Sawblade2" parent="Hazards" instance=ExtResource( 11 )]
 position = Vector2( 584.726, 3067.17 )
 rotation = 3.14159
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Sawblade3" parent="Hazards" instance=ExtResource( 11 )]
 position = Vector2( 5822.81, 825.708 )
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Sawblade4" parent="Hazards" instance=ExtResource( 11 )]
 position = Vector2( 5726.92, 3067.17 )
 rotation = 3.14159
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="Gargoyle" parent="Hazards" instance=ExtResource( 12 )]
 position = Vector2( 1371.93, 2552.94 )
@@ -171,7 +171,7 @@ collision_layer = 64
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor/Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="EntranceDoor" type="Sprite" parent="."]
 position = Vector2( 388.056, 3084.29 )

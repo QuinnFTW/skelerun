@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Items/GemPickup.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Items/BombPickup.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Items/TimePickup.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Decoration/Torch.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Hazards/TorchyDark.tscn" type="PackedScene" id=16]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 3075.12, 1143.66 )
@@ -35,6 +37,7 @@ b = Vector2( -2964.84, -1549.18 )
 extents = Vector2( 134.394, 256.651 )
 
 [node name="Level" type="Node2D"]
+position = Vector2( 190.191, 124.982 )
 script = ExtResource( 2 )
 
 [node name="RoomBase" type="Node2D" parent="."]
@@ -87,20 +90,20 @@ shape = SubResource( 4 )
 tile_set = ExtResource( 3 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 262213, 4, 0, 458781, 4, 0, 458821, 5, 0, 655389, 5, 0, 655429, 5, 0, 851997, 6, 0, 852023, 4, 0, 852037, 5, 0, 917549, 2, 0, 917563, 2, 0, 917579, 3, 0, 1048597, 4, 0, 1048631, 5, 0, 1048645, 5, 0, 1245205, 6, 0, 1245239, 5, 0, 1245253, 5, 0, 1376269, 4, 0, 1441847, 5, 0, 1441861, 5, 0, 1507373, 2, 0, 1507387, 2, 0, 1507403, 3, 0, 1572877, 5, 0, 1638413, 5, 0, 1638455, 5, 0, 1638469, 5, 0, 1835021, 6, 0, 1835063, 5, 0, 1835077, 5, 0, 2031657, 4, 0, 2031661, 0, 0, 2031671, 6, 0, 2031675, 2, 0, 2031685, 6, 0, 2031691, 3, 0, 2228265, 5, 0, 2424873, 5, 0, 2621467, 4, 0, 2621471, 0, 0, 2621481, 6, 0, 2621496, 1, 0, 2621516, 1, 0, 2818075, 5, 0, 3014683, 5, 0, 3211281, 0, 0, 3211291, 6, 0 )
+tile_data = PoolIntArray( 262173, 5, 0, 262213, 4, 0, 458781, 5, 0, 458821, 5, 0, 655389, 6, 0, 655429, 5, 0, 851989, 4, 0, 852023, 4, 0, 852037, 5, 0, 917549, 2, 0, 917563, 2, 0, 917579, 3, 0, 1048597, 5, 0, 1048631, 5, 0, 1048645, 5, 0, 1245205, 6, 0, 1245239, 5, 0, 1245253, 5, 0, 1376260, 2, 0, 1376269, 4, 0, 1441847, 5, 0, 1441861, 5, 0, 1507373, 2, 0, 1507387, 2, 0, 1507403, 3, 0, 1572877, 5, 0, 1638413, 5, 0, 1638455, 5, 0, 1638469, 5, 0, 1835021, 6, 0, 1835063, 5, 0, 1835077, 5, 0, 1966084, 2, 0, 2031657, 4, 0, 2031661, 0, 0, 2031671, 6, 0, 2031675, 2, 0, 2031685, 6, 0, 2031691, 3, 0, 2228265, 5, 0, 2424873, 5, 0, 2555907, 2, 0, 2621467, 4, 0, 2621471, 0, 0, 2621481, 6, 0, 2621496, 1, 0, 2621516, 1, 0, 2818075, 5, 0, 3014683, 5, 0, 3211281, 0, 0, 3211291, 6, 0 )
 
 [node name="Structure" type="Node2D" parent="."]
 
 [node name="Hazards" type="Node2D" parent="."]
 
 [node name="Gargoyle" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 1177.59, 1708.07 )
+position = Vector2( 1177.59, 1687.42 )
 
 [node name="Gargoyle2" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 1687.93, 1207.64 )
+position = Vector2( 1687.93, 1145.69 )
 
 [node name="Gargoyle3" parent="Hazards" instance=ExtResource( 9 )]
-position = Vector2( 2205.51, 686.224 )
+position = Vector2( 2200.35, 531.355 )
 
 [node name="Gargoyle4" parent="Hazards" instance=ExtResource( 9 )]
 position = Vector2( 2971.54, 2374.52 )
@@ -121,7 +124,44 @@ position = Vector2( 4240.75, 1434.37 )
 [node name="SpikeTrap4" parent="Hazards" instance=ExtResource( 10 )]
 position = Vector2( 3969.92, 1434.37 )
 
+[node name="TorchyDark" parent="Hazards" instance=ExtResource( 16 )]
+position = Vector2( 5474.31, 556.411 )
+
+[node name="TorchyDark2" parent="Hazards" instance=ExtResource( 16 )]
+position = Vector2( 5469.15, 1738.58 )
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="GemPickup" parent="Pickups" instance=ExtResource( 12 )]
+position = Vector2( 5921.16, 644.171 )
+
+[node name="TimePickup" parent="Pickups" instance=ExtResource( 14 )]
+position = Vector2( 5451.29, 1228.34 )
+
+[node name="BombPickup" parent="Pickups" instance=ExtResource( 13 )]
+position = Vector2( 4975.07, 1774.4 )
+
+[node name="GemPickup2" parent="Pickups" instance=ExtResource( 12 )]
+position = Vector2( 941.802, 1021.02 )
+
+[node name="TimePickup2" parent="Pickups" instance=ExtResource( 14 )]
+position = Vector2( 1452.87, 504.788 )
+
 [node name="Decoration" type="Node2D" parent="."]
+
+[node name="Torch" parent="Decoration" instance=ExtResource( 15 )]
+position = Vector2( 4142.44, 3054.97 )
+frame = 0
+
+[node name="Torch2" parent="Decoration" instance=ExtResource( 15 )]
+position = Vector2( 5463.99, 3091.11 )
+
+[node name="Torch3" parent="Decoration" instance=ExtResource( 15 )]
+position = Vector2( 2887.99, 3049.81 )
+
+[node name="Torch4" parent="Decoration" instance=ExtResource( 15 )]
+position = Vector2( 2144.62, 2229 )
+frame = 1
 
 [node name="ExitDoor" type="Sprite" parent="."]
 position = Vector2( 6013.08, 3089.08 )
@@ -140,13 +180,4 @@ texture = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 753.246, 3150.72 )
-
-[node name="GemPickup" parent="." instance=ExtResource( 12 )]
-position = Vector2( 5921.16, 644.171 )
-
-[node name="TimePickup" parent="." instance=ExtResource( 14 )]
-position = Vector2( 5451.29, 1228.34 )
-
-[node name="BombPickup" parent="." instance=ExtResource( 13 )]
-position = Vector2( 4975.07, 1774.4 )
 [connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]

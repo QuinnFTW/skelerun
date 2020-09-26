@@ -260,6 +260,20 @@ position = Vector2( 5730.37, 3310.75 )
 [node name="SpikeTrap8" parent="Hazards/SpikeTrapFloor" instance=ExtResource( 11 )]
 position = Vector2( 5993.41, 3310.75 )
 
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="GemPickup" parent="Pickups" instance=ExtResource( 15 )]
+position = Vector2( 5681.25, 1382.59 )
+
+[node name="GemPickup2" parent="Pickups" instance=ExtResource( 15 )]
+position = Vector2( 5969.75, 1376.94 )
+
+[node name="TimePickup" parent="Pickups" instance=ExtResource( 16 )]
+position = Vector2( 2824.54, 669.83 )
+
+[node name="GemPickup3" parent="Pickups" instance=ExtResource( 15 )]
+position = Vector2( 5814.76, 2458.72 )
+
 [node name="Decoration" type="Node2D" parent="."]
 
 [node name="ExitDoor" type="Sprite" parent="."]
@@ -279,15 +293,6 @@ texture = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 753.246, 3150.72 )
-
-[node name="GemPickup" parent="." instance=ExtResource( 15 )]
-position = Vector2( 5681.25, 1382.59 )
-
-[node name="GemPickup2" parent="." instance=ExtResource( 15 )]
-position = Vector2( 5969.75, 1376.94 )
-
-[node name="TimePickup" parent="." instance=ExtResource( 16 )]
-position = Vector2( 2824.54, 669.83 )
 [connection signal="body_entered" from="ExitDoor/Area2D" to="ExitDoor/Area2D" method="_on_Area2D_body_entered"]
 
 [editable path="Hazards/Gargoyle3"]
