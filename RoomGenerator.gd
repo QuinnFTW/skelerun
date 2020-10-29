@@ -27,7 +27,7 @@ var active_level
 var index = -1
 
 var time_remaining
-var room_score = 100 # the score reward for completing a room
+var room_score = 150 # the score reward for completing a room
 var time_bonus = 15 # number of seconds added to the timer when collecting a time pickup
 
 func _ready():
@@ -42,7 +42,7 @@ func _ready():
 	
 func _physics_process(delta):
 	time_remaining = $Timer.time_left
-	GlobalVars.score -= 0.1
+	GlobalVars.score -= 0.01
 	get_tree().call_group("UI", "update_text", time_remaining)
 	
 	

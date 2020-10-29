@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Gamestate.gd" type="Script" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://GFX/SPRITES/ButtonPrompts/f_Key.png" type="Texture" id=22]
 [ext_resource path="res://Levels/ArchwayExit.gd" type="Script" id=23]
 [ext_resource path="res://SFX/GetReady.wav" type="AudioStream" id=24]
+[ext_resource path="res://GFX/SPRITES/ButtonPrompts/q_key.png" type="Texture" id=25]
+[ext_resource path="res://GFX/SPRITES/bomb.png" type="Texture" id=26]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 3075.12, 1143.66 )
@@ -317,60 +319,16 @@ anims/open_gate = SubResource( 11 )
 [node name="ButtonPrompts" type="Node2D" parent="."]
 
 [node name="Drop" type="Sprite" parent="ButtonPrompts"]
-position = Vector2( 1032.96, 1905.71 )
+position = Vector2( 628.982, 1252.55 )
 texture = ExtResource( 20 )
 
-[node name="Spacebar" type="Sprite" parent="ButtonPrompts"]
-position = Vector2( 1048.98, 1302.36 )
-texture = ExtResource( 19 )
-
-[node name="WASD" type="Sprite" parent="ButtonPrompts"]
-position = Vector2( 1048.98, 592.223 )
-texture = ExtResource( 18 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ButtonPrompts"]
-anchor_right = 0.312
-anchor_bottom = 0.667
-margin_left = 800.0
-margin_top = 861.767
-margin_right = 905.442
-margin_bottom = 901.767
-grow_horizontal = 2
-grow_vertical = 2
-rect_scale = Vector2( 6.53979, 6.6 )
-custom_fonts/mono_font = ExtResource( 17 )
-custom_fonts/normal_font = ExtResource( 17 )
-tab_size = 8
-text = "To Move"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="ButtonPrompts"]
-anchor_right = 0.312
-anchor_bottom = 0.667
-margin_left = 784.0
-margin_top = 1485.77
-margin_right = 889.442
-margin_bottom = 1525.77
-grow_horizontal = 2
-grow_vertical = 2
-rect_scale = Vector2( 6.53979, 6.6 )
-custom_fonts/mono_font = ExtResource( 17 )
-custom_fonts/normal_font = ExtResource( 17 )
-tab_size = 8
-text = "To Jump"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="ButtonPrompts"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="ButtonPrompts/Drop"]
 anchor_right = 0.304
 anchor_bottom = 0.667
-margin_left = 643.346
-margin_top = 2077.36
-margin_right = 796.788
-margin_bottom = 2144.01
+margin_left = -389.614
+margin_top = 171.65
+margin_right = -236.172
+margin_bottom = 238.3
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 6.53979, 6.6 )
@@ -383,6 +341,78 @@ text = "     To Drop
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Spacebar" type="Sprite" parent="ButtonPrompts"]
+position = Vector2( 1581.33, 622.771 )
+texture = ExtResource( 19 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ButtonPrompts/Spacebar"]
+anchor_right = 0.312
+anchor_bottom = 0.667
+margin_left = -264.98
+margin_top = 183.41
+margin_right = -159.538
+margin_bottom = 223.41
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 6.53979, 6.6 )
+custom_fonts/mono_font = ExtResource( 17 )
+custom_fonts/normal_font = ExtResource( 17 )
+tab_size = 8
+text = "To Jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WASD" type="Sprite" parent="ButtonPrompts"]
+position = Vector2( 626.124, 520.489 )
+texture = ExtResource( 18 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ButtonPrompts/WASD"]
+anchor_right = 0.312
+anchor_bottom = 0.667
+margin_left = -248.98
+margin_top = 269.544
+margin_right = -143.538
+margin_bottom = 309.544
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 6.53979, 6.6 )
+custom_fonts/mono_font = ExtResource( 17 )
+custom_fonts/normal_font = ExtResource( 17 )
+tab_size = 8
+text = "To Move"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Q" type="Sprite" parent="ButtonPrompts"]
+position = Vector2( 1562.62, 1250.01 )
+texture = ExtResource( 25 )
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="ButtonPrompts/Q"]
+anchor_right = 0.304
+anchor_bottom = 0.667
+margin_left = -235.238
+margin_top = 150.325
+margin_right = -81.7959
+margin_bottom = 216.975
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 6.53979, 6.6 )
+custom_fonts/mono_font = ExtResource( 17 )
+custom_fonts/normal_font = ExtResource( 17 )
+tab_size = 8
+text = "To Drop 
+ a Bomb"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="ButtonPrompts/Q/RichTextLabel4"]
+position = Vector2( 36.0428, 55.0996 )
+scale = Vector2( 0.168169, 0.168169 )
+texture = ExtResource( 26 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 852.472, 3154.08 )

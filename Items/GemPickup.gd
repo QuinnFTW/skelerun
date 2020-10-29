@@ -1,6 +1,6 @@
 extends Node2D
 
-var gem_value = 25
+var gem_value = 50
 
 func _on_Area2D_body_entered(body):
 	GlobalVars.score += gem_value
